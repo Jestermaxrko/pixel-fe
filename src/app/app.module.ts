@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
-  { path: '/', component: AppComponent },
+  { path: '', component: AppComponent },
 ];
 
 @NgModule({
@@ -16,7 +16,7 @@ const appRoutes: Routes = [
     BrowserModule, 
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   providers: [],
