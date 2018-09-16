@@ -1,0 +1,57 @@
+.auth-page {
+  @include flexColumn;
+  align-items: center;
+
+  .auth-wrapper {
+    @include authBlock;
+    @include flexJustCenter;
+    margin-top: 40px;
+  }
+
+  .auth-link-wrapper {
+    @include authBlock;
+    margin: 20px auto 40px;
+    text-align: center;
+  }
+
+  .auth-link {
+    color: $dark-blue;
+    font-weight: bold;
+  }
+}
+
+.auth {
+  width: 75%;
+  @include flexColumn;
+  align-items: center;
+
+  &__text {
+    color: $normal-grey;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__btn {
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  &__btn.auth__btn_geo {
+    margin-top: 20px;
+  }
+
+  &__btn.btn_google,
+  &__btn.btn_facebook {
+    margin-bottom: 20px;
+  }
+
+  &__icon {
+    margin-right: 10px;
+  }
+
+  .mat-button-wrapper {
+    @include flexJustCenter;
+    align-items: center;
+  }
+}

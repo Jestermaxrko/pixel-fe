@@ -1,0 +1,17 @@
+.btn_full-width {
+  width: 100%;
+}
+
+.btn_facebook {
+  background-color: #4267B2;
+  &:hover {
+    background-color: rgb(38, 64, 116);
+  }
+}
+
+.btn_google {
+  background-color: #DD4D42;
+  &:hover {
+    background-color: rgb(161, 56, 48);
+  }
+}
