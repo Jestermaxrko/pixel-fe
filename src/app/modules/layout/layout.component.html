@@ -1,0 +1,22 @@
+<div>
+  {{auth.loading}}
+  {{pagePath}}
+  <div *ngIf="auth.loading" class="name">Spinner</div>
+
+  <div class="animate-switch-container layout" *ngIf="!auth.loading" [ngSwitch]="auth.login">
+
+      <div class="animate-switch public-layout" [ngSwitch]="pagePath" *ngSwitchCase="false">
+        <app-auth *ngSwitchCase="'/sign-up'" [title]="'Sign up'"></app-auth>
+        <app-auth *ngSwitchCase="'/sign-in'" [title]="'Sign in'"></app-auth>
+      </div>
+
+      <div class="animate-switch public-layout" *ngSwitchCase="true">
+          {{auth.user.nickname}}
+        <h1>Header</h1>
+          <div class="animate-switch-container layout" [ngSwitch]="pagePath">
+              <app-feed [user]="auth.login"></app-feed>
+          </div>
+        <h2>Footer</h2>
+      </div>
+  </div>
+</div>

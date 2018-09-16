@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import {
   FormBuilder,
   FormGroup,
@@ -8,7 +9,7 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'sign-up-form',
+  selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html'
 })
 export class SignUpFormComponent implements OnInit {
@@ -51,7 +52,6 @@ export class SignUpFormComponent implements OnInit {
     if (this.localForm.valid) {
       this.serverMsg = 'Check your email now';
       this.serverMsgClass = 'server-msg_success';
-      console.log(form);
     } else {
       this.serverMsg = 'Form is invalid';
       this.serverMsgClass = 'server-msg_err';
@@ -71,30 +71,30 @@ export class SignUpFormComponent implements OnInit {
       if (control.value.length < 6) {
         return { lessThatSixChar: true };
       }
-  
+
       if (!control.value.match(/^[A-Za-z][A-Za-z0-9_]*$/)) {
         return { charachtersErr: true };
       }
-  
+
       if (control.value.length > 14) {
         return { tooManyChar: true };
       }
     }
-  };
+  }
 
   emailValidator = (control: FormControl): { [s: string]: boolean } => {
-    if(control.value !== '') {
+    if (control.value !== '') {
       if (!control.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
         return { emailInvalid: true };
       }
     }
-  };
+  }
 
   passwordConfValidator = (control: FormControl): { [s: string]: boolean } => {
-    if(control.value !== '' && control.value !== this.password) {
+    if (control.value !== '' && control.value !== this.password) {
       return { passwordMismatch: true };
     }
-  };
+  }
 
   ngOnInit() {}
 }
