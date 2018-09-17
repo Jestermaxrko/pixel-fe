@@ -1,0 +1,15 @@
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flexJustCenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin authBlock {
+  background-color: #fff;
+  border: 1px solid $light-grey;
+  width: 35%;  
+}
