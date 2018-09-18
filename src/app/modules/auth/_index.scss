@@ -31,14 +31,15 @@
     font-weight: 500;
   }
 
-  &__btn {
-    font-size: 15px;
-    color: #fff;
-    text-transform: uppercase;
+  .form-error {
+    text-align: center;
   }
 
-  &__btn.auth__btn_geo {
-    margin-top: 20px;
+  &__btn {
+    font-size: 15px;
+    height: 35px;
+    color: #fff;
+    text-transform: uppercase;
   }
 
   &__btn.btn_google,
