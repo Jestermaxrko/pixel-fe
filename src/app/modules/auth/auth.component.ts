@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-auth',
@@ -6,4 +6,4 @@ import { Component, Input } from '@angular/core';
 })
 export class AuthComponent {
   @Input() title: string;
-};
+}

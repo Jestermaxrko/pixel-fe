@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../../../services/authService';
+
 import {
   FormBuilder,
   FormGroup,
@@ -8,7 +10,7 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'sign-in-form',
+  selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html'
 })
 export class SignInFormComponent implements OnInit {
@@ -17,8 +19,9 @@ export class SignInFormComponent implements OnInit {
   localForm: FormGroup;
   emailInp: AbstractControl;
   passwordInp: AbstractControl;
+  authState: Object;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private authService: AuthService) {
     this.localForm = fb.group({
       'email': ['', Validators.compose([
         Validators.required,
@@ -38,7 +41,7 @@ export class SignInFormComponent implements OnInit {
     if (this.localForm.valid) {
       this.serverMsg = 'Loged in';
       this.serverMsgClass = 'server-msg_success';
-      console.log(form);
+      this.authService.loginUser(form.email, form.password);
     } else {
       this.serverMsg = 'Form is invalid';
       this.serverMsgClass = 'server-msg_err';
@@ -46,12 +49,14 @@ export class SignInFormComponent implements OnInit {
   }
 
   emailValidator = (control: FormControl): { [s: string]: boolean } => {
-    if(control.value !== '') {
+    if (control.value !== '') {
       if (!control.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
         return { emailInvalid: true };
       }
     }
-  };
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.getAuthState().subscribe((res) => {this.authState = res; });
+  }
 }
