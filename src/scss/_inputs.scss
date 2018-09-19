@@ -1,3 +1,7 @@
-.input_full-width {
+.input--full-width {
   width: 100%;
+}
+
+.mat-error {
+  font-size: 9px; // if more than 9px errors would overlap with input labels
 }

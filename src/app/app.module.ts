@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import {
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { AuthService } from '../services/authService';
 import { AuthApi } from '../api/authApi';
+import { InputValidatorsService } from '../services/input-validators.service';
 
 import { SignUpFormComponent } from './modules/auth/components/sign-up-form/sign-up-form.component';
 import { SignInFormComponent } from './modules/auth/components/sign-in-form/sign-in-form.component';
@@ -23,6 +24,7 @@ import { ServerMsgComponent } from './shared/server-msg/server-msg.component';
 
 import { reducers } from '../reducers';
 import { LayoutComponent } from './modules/layout/layout.component';
+import { HeaderComponent } from './modules/layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -32,19 +34,24 @@ import { LayoutComponent } from './modules/layout/layout.component';
     SignInFormComponent,
     ServerMsgComponent,
     FeedComponent,
-    LayoutComponent
+    LayoutComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot( appRoutes ),
+    RouterModule.forRoot(appRoutes),
     MaterialModule,
     StoreModule.forRoot(reducers),
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [AuthService, AuthApi],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthService,
+    InputValidatorsService,
+    AuthApi,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

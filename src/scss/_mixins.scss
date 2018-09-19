@@ -1,3 +1,16 @@
+@mixin mQ($args...) {
+  @if length($args) == 1 {
+    @media screen and (min-width: nth($args, 1)){
+      @content;
+    }
+  }
+  @if length($args) == 2 {
+    @media screen and (min-width: nth($args, 1)) and (max-width: nth($args, 2)){
+      @content;
+    }
+  }
+}
+
 @mixin flexColumn {
   display: flex;
   flex-direction: column;
@@ -11,5 +24,17 @@
 @mixin authBlock {
   background-color: #fff;
   border: 1px solid $light-grey;
-  width: 35%;  
+  width: 80%;
+
+  @include mQ(426px) {
+    width: 70%;
+  }
+
+  @include mQ(600px) {
+    width: 60%;
+  }
+
+  @include mQ(769px) {
+    width: 35%;
+  }
 }

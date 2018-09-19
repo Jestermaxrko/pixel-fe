@@ -1,4 +1,4 @@
-import { ACTION_LOGOUT, ACTION_LOGIN, ACTION_LOADING} from '../actions/authActions';
+import { ACTION_LOGOUT, ACTION_LOGIN, ACTION_LOADING } from '../actions/authActions';
 
 export interface AuthReducerState {
   login: boolean;
@@ -9,7 +9,7 @@ export interface AuthReducerState {
 const initialState: AuthReducerState = {
   login: false,
   user: null,
-  loading: false
+  loading: false,
 };
 
 export function reducer(state = initialState, action): AuthReducerState {
@@ -18,19 +18,19 @@ export function reducer(state = initialState, action): AuthReducerState {
       return {
         ...state,
         login: false,
-        user: null
+        user: null,
       };
     case ACTION_LOGIN:
       return {
         ...state,
         login: true,
         user: action.payload,
-        loading: false
+        loading: false,
       };
     case ACTION_LOADING:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     default: return state;
   }

@@ -1,37 +1,37 @@
-<form class="form_full-width" [formGroup]="localForm" 
+<form class="form--full-width" [formGroup]="localForm" 
   (ngSubmit)="handleSubmit(localForm.value)"
 >
-  <mat-form-field class="input_full-width">
+  <mat-form-field class="input--full-width">
     <input matInput 
       placeholder="Email" type="email"
       [formControl]="emailInp"
     >
-    <mat-error *ngIf="emailInp.hasError('emailInvalid')">
+    <mat-error class="mat-error" *ngIf="emailInp.hasError('emailInvalid')">
       Email Invalid
     </mat-error>
-    <mat-error *ngIf="emailInp.hasError('required') && emailInp.touched">
+    <mat-error class="mat-error" *ngIf="emailInp.hasError('required') && emailInp.touched">
       Email is required
     </mat-error>
   </mat-form-field>
   
 
-  <mat-form-field class="input_full-width">
+  <mat-form-field class="input--full-width">
     <input matInput
       placeholder="Password" type="password"
       [formControl]="passwordInp"
     >
     <mat-hint align="start">Min 6 characters</mat-hint>
-    <mat-error *ngIf="passwordInp.hasError('minlength')">
+    <mat-error class="mat-error" *ngIf="passwordInp.hasError('minlength')">
       Password must be at least 6 characters long         
     </mat-error>
-    <mat-error *ngIf="passwordInp.hasError('required') && passwordInp.touched">
+    <mat-error class="mat-error" *ngIf="passwordInp.hasError('required') && passwordInp.touched">
       Password is required
     </mat-error>
   </mat-form-field>
   
   <app-server-msg [msg]="serverMsg" [ngClass]="serverMsgClass"></app-server-msg>
   <button mat-raised-button color="primary" type="submit"
-    class="auth__btn btn_full-width"        
+    class="auth__btn btn--full-width"        
   >
     <i class="material-icons auth__icon">person_add</i>
     Sign In

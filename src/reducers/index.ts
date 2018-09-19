@@ -1,10 +1,10 @@
-import { reducer, authReducerState } from './authReducer';
+import { reducer, AuthReducerState } from './authReducer';
 import { ActionReducerMap } from '@ngrx/store';
 
 interface AppState {
-  authReducer: authReducerState;
+  authReducer: AuthReducerState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  authReducer: reducer
+  authReducer: reducer,
 };
