@@ -1,3 +1,10 @@
+input:-webkit-autofill, input:-webkit-autofill:active, input:-webkit-autofill:focus, input:-webkit-autofill:hover {
+  transition: all 5000s ease-in-out 0s;
+  transition-property: background-color;
+  background-color: transparent;
+  -webkit-text-fill-color: #000;
+}
+
 .input--full-width {
   width: 100%;
 }

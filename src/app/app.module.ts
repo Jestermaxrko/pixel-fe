@@ -14,8 +14,8 @@ import { FeedComponent } from './modules/feed/feed.component';
 import { appRoutes } from './app.router';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { AuthService } from '../services/authService';
-import { AuthApi } from '../api/authApi';
+import { AuthService } from '../services/auth-service';
+import { AuthApi } from '../api/auth';
 import { InputValidatorsService } from '../services/input-validators.service';
 
 import { SignUpFormComponent } from './modules/auth/components/sign-up-form/sign-up-form.component';
@@ -24,7 +24,8 @@ import { ServerMsgComponent } from './shared/server-msg/server-msg.component';
 
 import { reducers } from '../reducers';
 import { LayoutComponent } from './modules/layout/layout.component';
-import { HeaderComponent } from './modules/layout/header/header.component';
+import { HeaderComponent } from './modules/header/header.component';
+import { HeaderNavComponent } from './modules/header/components/header-nav/header-nav.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HeaderComponent } from './modules/layout/header/header.component';
     FeedComponent,
     LayoutComponent,
     HeaderComponent,
+    HeaderNavComponent,
   ],
   imports: [
     BrowserModule,

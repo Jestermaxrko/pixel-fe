@@ -1,0 +1,7 @@
+<i class="material-icons header__icon" [matMenuTriggerFor]="headerMenu">extension</i>
+<mat-menu #headerMenu="matMenu">
+  <button mat-menu-item>Profile</button>
+  <button mat-menu-item
+    (click)="handleSignOut()"
+  >Sign Out</button>
+</mat-menu>
