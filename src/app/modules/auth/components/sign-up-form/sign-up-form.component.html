@@ -1,73 +1,73 @@
-<form class="form_full-width" [formGroup]="localForm" 
+<form class="form--full-width" [formGroup]="localForm" 
   (ngSubmit)="handleSubmit(localForm.value)"
 >
-  <mat-form-field class="input_full-width">
+  <mat-form-field class="input--full-width">
     <input matInput
       placeholder="Nickname" type="text"
       [formControl]="nicknameInp"
     >
     <mat-hint align="start">Min 6 characters</mat-hint>
-    <mat-error *ngIf="nicknameInp.hasError('firstCharErr')">
+    <mat-error class="mat-error" *ngIf="nicknameInp.hasError('firstCharErr')">
       First symbol has to be a Latin letter
     </mat-error>
-    <mat-error *ngIf="nicknameInp.hasError('lessThatSixChar')">
+    <mat-error class="mat-error" *ngIf="nicknameInp.hasError('lessThatSixChar')">
       Nickname must be 6 or more characters
     </mat-error>
-    <mat-error *ngIf="nicknameInp.hasError('charachtersErr')">
+    <mat-error class="mat-error" *ngIf="nicknameInp.hasError('charachtersErr')">
       Use letters, numbers or underline charachters
     </mat-error>
-    <mat-error *ngIf="nicknameInp.hasError('tooManyChar')">
+    <mat-error class="mat-error" *ngIf="nicknameInp.hasError('tooManyChar')">
       Nickname must be less than 15 characters
     </mat-error>
-    <mat-error *ngIf="nicknameInp.hasError('required') && nicknameInp.touched">
+    <mat-error class="mat-error" *ngIf="nicknameInp.hasError('required') && nicknameInp.touched">
       Nickname is required
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field class="input_full-width">
+  <mat-form-field class="input--full-width">
     <input matInput 
       placeholder="Email" type="email"
       [formControl]="emailInp"
     >
-    <mat-error *ngIf="emailInp.hasError('emailInvalid')">
+    <mat-error class="mat-error" *ngIf="emailInp.hasError('emailInvalid')">
       Email Invalid
     </mat-error>
-    <mat-error *ngIf="emailInp.hasError('required') && emailInp.touched">
+    <mat-error class="mat-error" *ngIf="emailInp.hasError('required') && emailInp.touched">
       Email is required
     </mat-error>
   </mat-form-field>
   
-  <mat-form-field class="input_full-width">
+  <mat-form-field class="input--full-width">
     <input matInput #password
       placeholder="Password" type="password"
       [formControl]="passwordInp"
       (change)="setPassword(password.value)"
     >
     <mat-hint align="start">Min 6 characters</mat-hint>
-    <mat-error *ngIf="passwordInp.hasError('minlength')">
+    <mat-error class="mat-error" *ngIf="passwordInp.hasError('minlength')">
       Password must be at least 6 characters long         
     </mat-error>
-    <mat-error *ngIf="passwordInp.hasError('required') && passwordInp.touched">
+    <mat-error class="mat-error" *ngIf="passwordInp.hasError('required') && passwordInp.touched">
       Password is required
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field class="input_full-width">
+  <mat-form-field class="input--full-width">
     <input matInput #confPassword
       placeholder="Confirm Password" type="password"
       [formControl]="confPasswordInp"
     >
-    <mat-hint align="start">Min 6 characters</mat-hint>
-    <mat-error *ngIf="confPasswordInp.hasError('passwordMismatch')">
+    <mat-hint align="start">Passwors have to match</mat-hint>
+    <mat-error class="mat-error" *ngIf="confPasswordInp.hasError('passwordMismatch')">
       Passwords don't match
     </mat-error>
-    <mat-error *ngIf="confPasswordInp.hasError('required') && confPasswordInp.touched">
+    <mat-error class="mat-error" *ngIf="confPasswordInp.hasError('required') && confPasswordInp.touched">
       Password confirmation is required
     </mat-error>
   </mat-form-field>
   <app-server-msg [msg]="serverMsg" [ngClass]="serverMsgClass"></app-server-msg>
   <button mat-raised-button color="primary" type="submit"
-    class="auth__btn btn_full-width"        
+    class="auth__btn btn--full-width"        
   >
     <i class="material-icons auth__icon">person_add</i>
     Sign Up

@@ -2,8 +2,11 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+export const env = {
+  production: false,
+  host: 'http://localhost',
+  port: '3000',
+  awsImage: 'https://s3.eu-west-3.amazonaws.com/pixelistic',
 };
 
 /*

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve -o --port 8080",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -30,6 +30,7 @@
     "ngrx": "^2.0.1",
     "rxjs": "^6.3.2",
     "rxjs-compat": "^6.3.2",
+    "tslint-config-airbnb": "^5.11.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

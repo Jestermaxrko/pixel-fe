@@ -1,17 +1,17 @@
 .auth-page {
-  @include flexColumn;
   align-items: center;
+  @include flexColumn;
 
   .auth-wrapper {
+    margin-top: 40px;
     @include authBlock;
     @include flexJustCenter;
-    margin-top: 40px;
   }
 
   .auth-link-wrapper {
-    @include authBlock;
     margin: 20px auto 40px;
     text-align: center;
+    @include authBlock;
   }
 
   .auth-link {
@@ -22,13 +22,14 @@
 
 .auth {
   width: 75%;
-  @include flexColumn;
   align-items: center;
+  @include flexColumn;
 
   &__text {
     color: $normal-grey;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
+    text-align: center;
   }
 
   .form-error {
@@ -36,15 +37,16 @@
   }
 
   &__btn {
-    font-size: 15px;
+    font-size: 12px;
     height: 35px;
     color: #fff;
     text-transform: uppercase;
   }
 
-  &__btn.btn_google,
-  &__btn.btn_facebook {
+  &__btn.btn--google,
+  &__btn.btn--facebook {
     margin-bottom: 20px;
+    padding: 0;
   }
 
   &__icon {
@@ -52,7 +54,25 @@
   }
 
   .mat-button-wrapper {
-    @include flexJustCenter;
     align-items: center;
+    @include flexJustCenter;
+  }
+
+  @include mQ(426px) {
+    &__btn {
+      font-size: 14px;
+    }
+  }
+
+  @include mQ(769px) {
+    &__btn {
+      font-size: 12px;
+    }
+  }
+
+  @include mQ(850px) {
+    &__btn {
+      font-size: 14px;
+    }
   }
 }
