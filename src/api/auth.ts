@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { env } from '../environments/environment';
 
 const getHeaders = () => {
@@ -11,14 +12,16 @@ const getHeaders = () => {
 };
 
 @Injectable()
-
 export class AuthApi {
   constructor(private http: HttpClient) {}
-  authUser = (email: string, password: string) => {
+
+  signIn = (email: string, password: string): Observable<Object> => {
     return this.http.post(`${env.host}:${env.port}/login`, { email, password });
   }
 
-  validateToken = () => {
+  validateToken = (): Observable<Object> => {
     return this.http.get(`${env.host}:${env.port}/validate-token`, { headers : getHeaders() });
   }
+
+  signOut = (): Observable<Object> => this.http.get(`${env.host}:${env.port}/logout`, { headers : getHeaders() });
 }

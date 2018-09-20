@@ -1,0 +1,96 @@
+.header {
+  $_gap: 10px;
+  $_search-height: 30px;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid $light-grey;
+  @include flexJustCenter;
+
+  &-container {
+    width: 90%;
+    max-width: 940px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .logo {
+    cursor: pointer;
+    justify-self: left;
+    @include flexAlignCenter;
+  }
+
+  .logo__img--geo {
+    margin-right: $_gap;
+  }
+
+  .logo__text {
+    border-left: 1px solid #000;
+    font-size: 20px;
+    padding-left: $_gap;
+  }
+
+  .search-container {
+    cursor: pointer;
+    display: none;
+    background-color: $body-background;
+    border: 1px solid $normal-grey;
+    height: $_search-height;
+    width: 180px;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .search__input {
+    height: $_search-height;
+    color: darken($normal-grey, 20%);
+    @include flexCenter;
+  }
+
+  .search__icon {
+    font-size: 18px;
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__btn {
+    @include flexCenter;
+  }
+
+  &__btn:not(:last-child) {
+    margin-right: $_gap;
+  }
+
+  &__icon {
+    cursor: pointer;
+    font-size: 36px;
+  }
+
+  @include mQ(500px) {
+    &-container {
+      grid-template-columns: repeat(2, 1fr) 1.2fr;
+    }
+
+    .search-container {
+      display: block;
+    }
+  }
+
+  @include mQ(768px) {
+    &-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @include mQ(850px) {
+    .followings-icon {
+      display: none;
+    }
+
+    &__btn:not(:last-child) {
+      margin-right: $_gap + 20px;
+    }
+  }
+}

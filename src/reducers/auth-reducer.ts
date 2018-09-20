@@ -1,20 +1,22 @@
-import { ACTION_LOGOUT, ACTION_LOGIN, ACTION_LOADING } from '../actions/authActions';
+import { SIGN_OUT, ACTION_LOGIN, ACTION_LOADING, ERR } from '../actions/auth';
 
 export interface AuthReducerState {
   login: boolean;
   user: Object;
   loading: boolean;
+  err: boolean;
 }
 
 const initialState: AuthReducerState = {
   login: false,
   user: null,
   loading: false,
+  err: false,
 };
 
 export function reducer(state = initialState, action): AuthReducerState {
   switch (action.type) {
-    case ACTION_LOGOUT:
+    case SIGN_OUT:
       return {
         ...state,
         login: false,
@@ -31,6 +33,11 @@ export function reducer(state = initialState, action): AuthReducerState {
       return {
         ...state,
         loading: true,
+      };
+    case ERR:
+      return {
+        ...state,
+        err: true,
       };
     default: return state;
   }

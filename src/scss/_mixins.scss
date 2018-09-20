@@ -16,9 +16,20 @@
   flex-direction: column;
 }
 
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin flexJustCenter {
   display: flex;
   justify-content: center;
+}
+
+@mixin flexAlignCenter {
+  display: flex;
+  align-items: center;
 }
 
 @mixin authBlock {
