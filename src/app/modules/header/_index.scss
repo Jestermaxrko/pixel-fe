@@ -1,6 +1,6 @@
 .header {
   $_gap: 10px;
-  $_search-height: 30px;
+  
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid $light-grey;
@@ -30,24 +30,10 @@
   }
 
   .search-container {
-    cursor: pointer;
+    position: relative;
     display: none;
-    background-color: $body-background;
-    border: 1px solid $normal-grey;
-    height: $_search-height;
-    width: 180px;
     align-self: center;
     justify-self: center;
-  }
-
-  .search__input {
-    height: $_search-height;
-    color: darken($normal-grey, 20%);
-    @include flexCenter;
-  }
-
-  .search__icon {
-    font-size: 18px;
   }
 
   .buttons-container {
@@ -66,9 +52,10 @@
   &__icon {
     cursor: pointer;
     font-size: 36px;
+    user-select: none;
   }
 
-  @include mQ(500px) {
+  @include mQ(530px) {
     &-container {
       grid-template-columns: repeat(2, 1fr) 1.2fr;
     }
@@ -94,3 +81,5 @@
     }
   }
 }
+
+@import './components/search-box/index';

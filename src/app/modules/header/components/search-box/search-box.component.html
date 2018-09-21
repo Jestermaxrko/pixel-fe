@@ -1,0 +1,32 @@
+<div [ngSwitch]="focus">
+  <div class="search" *ngSwitchCase="false">
+    <i class="material-icons search__icon">search</i>
+    <p>Search</p>
+  </div>
+  <div class="search search--focused" *ngSwitchCase="true">
+    <i class="material-icons search__icon">search</i>
+    <app-search-inp
+      (users)="users = $event"
+      (loading)="loading = $event"
+    ></app-search-inp>
+    <i class="material-icons search__icon"
+      (click)="closeInput()"
+      *ngIf="loading === false"
+    >close</i>
+    <mat-progress-spinner 
+      *ngIf="loading === true"
+      [color]="'accent'"
+      [mode]="'indeterminate'"
+      [diameter]="'18'"
+    ></mat-progress-spinner>
+  </div>
+</div>
+<div class="scrollbar-container" [ngSwitch]="focus">
+  <ng-scrollbar [viewClass]="scrollbar" *ngSwitchCase="true">
+    <button mat-raised-button class="btn--full-width" *ngFor="let user of users">
+      <img [src]="user.avatar" class="user-avatar" alt="">
+      {{user.nickname}}
+    </button>
+  </ng-scrollbar>
+</div>
+

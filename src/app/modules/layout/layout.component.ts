@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   Router,
 } from '@angular/router';
-import { AuthService } from '../../../services/auth-service';
+import { AuthService } from '../../../services/auth.service';
 
 interface User {
   user: {
@@ -24,7 +24,8 @@ export class LayoutComponent implements OnInit {
 
   constructor (
     private authService: AuthService,
-    private router: Router) {
+    private router: Router,
+  ) {
     this.router.events.subscribe((): void => { this.pagePath = this.router.url; });
   }
 
