@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../../services/auth-service';
+import { AuthService } from '../../../../../services/auth.service';
 import { InputValidatorsService } from '../../../../../services/input-validators.service';
 import {
   FormBuilder,
@@ -48,7 +48,7 @@ export class SignInFormComponent implements OnInit {
       this.authService.signIn(form.email, form.password);
     } else {
       this.serverMsg = 'Form is invalid';
-      this.serverMsgClass = 'server-msg_err';
+      this.serverMsgClass = 'server-msg--err';
     }
   }
 }

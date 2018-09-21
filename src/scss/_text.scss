@@ -5,3 +5,7 @@
 .text--normal-grey {
   color: $normal-grey;
 }
+
+.disable-select { 
+  user-select: none;
+}

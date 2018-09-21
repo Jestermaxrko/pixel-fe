@@ -9,10 +9,9 @@ import { Store } from '@ngrx/store';
 export class AuthService {
   constructor(
     private store: Store<any>,
-    private http: HttpClient,
     private router: Router,
-    private auth: AuthApi) {
-  }
+    private auth: AuthApi,
+  ) { }
 
   getAuthState = (): Observable<any> => this.store.select('authReducer');
 
