@@ -1,0 +1,21 @@
+<div class="verify-page">
+  <app-spinner *ngIf="!authState.user && !authState.err" ></app-spinner>
+
+    <div class="verify-success" *ngIf="authState.user">
+      {{startRedirectTimer()}}
+      <mat-icon class="verify_success__icon">assignment_turned_in</mat-icon>
+      <p class="verify-success__text text--bold">Your account is verified</p>
+      <p class="verify-success__text">Redirecting ... </p>
+      <p class="verify-success-timer"> {{redirectTimer}} </p>
+    </div>
+      
+    <div class="verify-error" *ngIf="authState.err">
+      <mat-icon class="verify-error__icon">error</mat-icon>
+      <p class="verify-error__text text--err">
+          {{authState.errMsg}}
+      </p>
+    </div>
+</div>
+
+
+

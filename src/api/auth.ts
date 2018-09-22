@@ -15,13 +15,17 @@ const getHeaders = () => {
 export class AuthApi {
   constructor(private http: HttpClient) {}
 
-  signIn = (email: string, password: string): Observable<Object> => {
-    return this.http.post(`${env.host}:${env.port}/login`, { email, password });
+  signUp = (email: string, nickname: string, password: string, passwordConf: string): Observable<Object> => {
+    return this.http.post(`${env.host}:${env.port}/register`, { email, nickname, password, passwordConf }, { headers: getHeaders() });
   }
 
-  validateToken = (): Observable<Object> => {
-    return this.http.get(`${env.host}:${env.port}/validate-token`, { headers : getHeaders() });
+  verifyEmail = (hash: string): Observable<Object> => this.http.get(`${env.host}:${env.port}/verify${hash}`);
+
+  signIn = (email: string, password: string): Observable<Object> => {
+    return this.http.post(`${env.host}:${env.port}/login`, { email, password }, { headers: getHeaders() });
   }
+
+  validateToken = (): Observable<Object> => this.http.get(`${env.host}:${env.port}/validate-token`, { headers : getHeaders() });
 
   signOut = (): Observable<Object> => this.http.get(`${env.host}:${env.port}/logout`, { headers : getHeaders() });
 }

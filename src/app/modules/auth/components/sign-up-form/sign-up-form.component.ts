@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../../../services/auth.service';
 import {
   FormBuilder,
   FormGroup,
@@ -12,20 +13,22 @@ import { InputValidatorsService } from '../../../../../services/input-validators
   templateUrl: './sign-up-form.component.html',
 })
 export class SignUpFormComponent implements OnInit {
-  serverMsg: string;
-  serverMsgClass: string;
   localForm: FormGroup;
   nicknameInp: AbstractControl;
   emailInp: AbstractControl;
   passwordInp: AbstractControl;
   confPasswordInp: AbstractControl;
+  authState: Object;
 
   constructor(
     private fb: FormBuilder,
-    private validators: InputValidatorsService) {
+    private validators: InputValidatorsService,
+    private authService: AuthService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.authService.getAuthState().subscribe((res) => { this.authState = res; });
+
     this.localForm = this.fb.group({
       nickname: ['', Validators.compose([
         Validators.required,
@@ -52,11 +55,7 @@ export class SignUpFormComponent implements OnInit {
 
   handleSubmit = (form: any): void => {
     if (this.localForm.valid) {
-      this.serverMsg = 'Check your email now';
-      this.serverMsgClass = 'server-msg_success';
-    } else {
-      this.serverMsg = 'Form is invalid';
-      this.serverMsgClass = 'server-msg_err';
+      this.authService.signUp(form.email, form.nickname, form.password, form.confPassword);
     }
   }
 }
