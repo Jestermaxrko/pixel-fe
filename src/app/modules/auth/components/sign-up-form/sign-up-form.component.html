@@ -65,8 +65,19 @@
       Password confirmation is required
     </mat-error>
   </mat-form-field>
-  <app-server-msg [msg]="serverMsg" [ngClass]="serverMsgClass"></app-server-msg>
-  <button mat-raised-button color="primary" type="submit"
+
+  <app-spinner 
+    *ngIf="authState.authLoading" 
+    [size]="20"
+    [color]="'accent'"
+  ></app-spinner>
+
+  <app-server-msg 
+    [msg]="authState.err ? authState.errMsg: authState.confMsg" 
+    [ngClass]="authState.err ? 'server-msg--err': 'server-msg--success' ">
+  </app-server-msg>
+  
+  <button mat-raised-button color="primary" type="submit" [disabled]="authState.confMsg ? true: false" 
     class="auth__btn btn--full-width"        
   >
     <mat-icon class="auth__icon">person_add</mat-icon>

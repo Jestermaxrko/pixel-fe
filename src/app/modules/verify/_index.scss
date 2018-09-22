@@ -1,0 +1,35 @@
+.verify-page {
+  text-align: center;
+  margin-top: 10%;
+  @include flexCenter;
+
+  .mat-icon { 
+    height: 70px;
+    width: 70px;
+    font-size:70px; 
+  }
+
+  .verify-success {
+    .mat-icon {
+      color: green;
+    }
+
+    &__text {
+      color: #333;
+    }
+  
+    &-timer {
+      margin: auto;
+      border: 2px solid #ccc;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      @include flexCenter;
+    }
+  
+    .text--bold {
+      font-weight: bold; 
+    } 
+  }
+}
+

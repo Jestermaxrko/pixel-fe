@@ -7,7 +7,7 @@ import {
 @Component({
   selector: 'app-server-msg',
   template: `
-    <div class="server-msg">{{ msg }}</div>
+    <div class="server-msg {{type}}">{{ msg }}</div>
   `,
 })
 export class ServerMsgComponent implements OnInit {

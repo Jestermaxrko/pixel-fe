@@ -28,8 +28,14 @@
       Password is required
     </mat-error>
   </mat-form-field>
-  
-  <app-server-msg [msg]="serverMsg" [ngClass]="serverMsgClass"></app-server-msg>
+
+  <app-spinner 
+    *ngIf="authState.authLoading" 
+    [size]="20"
+    [color]="'accent'"
+  ></app-spinner>
+
+  <app-server-msg [msg]="authState.errMsg" [ngClass]="'server-msg--err'"></app-server-msg>
   <button mat-raised-button color="primary" type="submit"
     class="auth__btn btn--full-width"        
   >

@@ -23,14 +23,18 @@ import { InputValidatorsService } from '../services/input-validators.service';
 import { SignUpFormComponent } from './modules/auth/components/sign-up-form/sign-up-form.component';
 import { SignInFormComponent } from './modules/auth/components/sign-in-form/sign-in-form.component';
 import { ServerMsgComponent } from './shared/server-msg/server-msg.component';
-import { LayoutComponent } from './modules/layout/layout.component';
+
 import { HeaderComponent } from './modules/header/header.component';
+import { MainLayoutComponent } from './modules/layout/components/main-layout/main-layout.component';
+import { AuthLayoutComponent } from './modules/layout/components/auth-layout/auth-layout.component';
 import { HeaderNavComponent } from './modules/header/components/header-nav/header-nav.component';
 import { SearchBoxComponent } from './modules/header/components/search-box/search-box.component';
 import { SearchInpComponent } from './modules/header/components/search-inp/search-inp.component';
 import { AuthComponent } from './modules/auth/auth.component';
 import { FeedComponent } from './modules/feed/feed.component';
 import { AppComponent } from './app.component';
+import { VerifyComponent } from './modules/verify/verify.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +44,14 @@ import { AppComponent } from './app.component';
     SignInFormComponent,
     ServerMsgComponent,
     FeedComponent,
-    LayoutComponent,
     HeaderComponent,
     HeaderNavComponent,
     SearchBoxComponent,
     SearchInpComponent,
+    MainLayoutComponent,
+    AuthLayoutComponent,
+    VerifyComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

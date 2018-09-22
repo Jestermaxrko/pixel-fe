@@ -1,0 +1,7 @@
+<app-spinner *ngIf="auth.loading" ></app-spinner>
+
+<div class="public-layout" *ngIf="!auth.loading"  [ngSwitch]="pagePath" >
+  <app-auth *ngSwitchCase="'/sign-up'" [title]="'Sign up'"></app-auth>
+  <app-auth *ngSwitchCase="'/sign-in'" [title]="'Sign in'"></app-auth>
+  <app-verify *ngSwitchCase="'/verify'"></app-verify>
+</div>
