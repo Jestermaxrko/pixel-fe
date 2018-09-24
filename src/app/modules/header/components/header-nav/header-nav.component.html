@@ -1,7 +1,21 @@
+<style>
+  .btn__text {
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
+  }
+</style>
+
 <i class="material-icons header__icon" [matMenuTriggerFor]="headerMenu">extension</i>
 <mat-menu #headerMenu="matMenu">
-  <button mat-menu-item>Profile</button>
+  <button mat-menu-item
+    routerLink="{{ './user-page/' + auth.user.nickname }}"
+  >
+    <p class="btn__text">Profile</p>
+  </button>
   <button mat-menu-item
     (click)="handleSignOut()"
-  >Sign Out</button>
+  >
+   <p class="btn__text">Sign Out</p>
+  </button>
 </mat-menu>

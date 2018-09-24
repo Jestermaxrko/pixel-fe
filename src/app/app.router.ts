@@ -1,13 +1,29 @@
 import { Routes } from '@angular/router';
-import { MainLayoutComponent } from './modules/layout/components/main-layout/main-layout.component';
-import { AuthLayoutComponent } from './modules/layout/components/auth-layout/auth-layout.component';
-import { VerifyComponent } from './modules/verify/verify.component';
+import { SignedInGuard } from '../guards/signed-in.guard';
+import { SignedOutGuard } from '../guards/signed-out.guard';
+import { mainLayoutRoutes } from './modules/main-layout/main-layout.router';
+import { authLayoutRoutes } from './modules/auth-layout/auth-layout.router';
+import { MainLayoutComponent } from './modules/main-layout/main-layout.component';
+import { PageNotFoudComponent } from './modules/page-not-foud/page-not-foud.component';
+import { AuthLayoutComponent } from './modules/auth-layout/auth-layout.component';
 
 export const appRoutes: Routes = [
-  { path: '', component: MainLayoutComponent,  pathMatch: 'full' },
-  { path: 'sign-up', component: AuthLayoutComponent,  pathMatch: 'full' },
-  { path: 'sign-in', component: AuthLayoutComponent },
-  { path: 'verify', component: AuthLayoutComponent },
+  {
+    path: 'auth', 
+    component: AuthLayoutComponent,
+    children: authLayoutRoutes,
+    canActivate: [ SignedOutGuard ],
+  },
+  {
+    path: '', 
+    component: MainLayoutComponent,
+    children: mainLayoutRoutes,
+    canActivate: [ SignedInGuard ],
+  },
+  {
+    path: '**',
+    component: PageNotFoudComponent
+  },
 ];
 
 export default appRoutes;

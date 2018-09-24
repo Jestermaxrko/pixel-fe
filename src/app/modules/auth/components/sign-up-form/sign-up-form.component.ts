@@ -53,6 +53,10 @@ export class SignUpFormComponent implements OnInit {
     this.confPasswordInp = this.localForm.controls['confPassword'];
   }
 
+  ngOnDestroy() {
+    this.authService.clearErrors();
+  }
+
   handleSubmit = (form: any): void => {
     if (this.localForm.valid) {
       this.authService.signUp(form.email, form.nickname, form.password, form.confPassword);

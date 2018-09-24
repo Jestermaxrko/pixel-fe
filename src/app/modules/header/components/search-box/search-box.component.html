@@ -23,7 +23,9 @@
 </div>
 <div class="scrollbar-container" *ngIf="users.length">
   <ng-scrollbar>
-    <button mat-raised-button class="btn--full-width" *ngFor="let user of users">
+    <button mat-raised-button class="btn--full-width" *ngFor="let user of users"
+      (click)="closeInput()"
+    >
       <a routerLink="{{ '/user-page/' + user.nickname }}" class="scrollbar__link">
         <img src="{{ awsImage + '/' + user.avatar }}" class="user-avatar" alt="">
         {{ user.nickname }}
