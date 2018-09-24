@@ -51,6 +51,7 @@ export function reducer(state = initialState, action): Auth {
         err: true,
         errMsg: action.payload,
       };
+
     case VERIFY_SUCCESS:
       return {
         ...state,
@@ -69,6 +70,7 @@ export function reducer(state = initialState, action): Auth {
         err: true,
         loading: false,
       };
+
     case AUTH_LOADING:
       return {
         ...state,
@@ -77,16 +79,19 @@ export function reducer(state = initialState, action): Auth {
         authLoading: true,
 
       };
+
     case LOADING:
       return {
         ...state,
         loading: true,
       };
+
     case ERR:
       return {
         ...state,
         err: true,
       };
+
     case CLEAR_ERRORS:
       return {
         ...state,

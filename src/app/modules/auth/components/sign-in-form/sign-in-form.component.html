@@ -35,7 +35,12 @@
     [color]="'accent'"
   ></app-spinner>
 
-  <app-server-msg [msg]="authState.errMsg" [ngClass]="'server-msg--err'"></app-server-msg>
+  <app-server-msg 
+    *ngIf="!authState.authLoading"
+    [msg]="authState.errMsg" 
+    [ngClass]="'server-msg--err'"
+  ></app-server-msg>
+
   <button mat-raised-button color="primary" type="submit"
     class="auth__btn btn--full-width"        
   >

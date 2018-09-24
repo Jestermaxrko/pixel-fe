@@ -33,13 +33,13 @@ export class SearchInpComponent implements OnInit {
 
   handleSearch = (value): void => {
     if (!value.length) {
-      this.users.emit([]);
+      this.users.emit([ ]);
       return;
     }
     this.loading.emit(true);
     this.searchApi.searchUsers().subscribe(
-      (res: SearchUser[]): void => {
-        const users = res.filter((item: SearchUser): boolean => {
+      (res: any): void => {
+        const users = res.users.filter((item: SearchUser): boolean => {
           return item.nickname.toUpperCase().indexOf(value.toUpperCase()) > -1;
         });
         this.users.emit(users);

@@ -35,6 +35,7 @@ import { FeedComponent } from './modules/feed/feed.component';
 import { AppComponent } from './app.component';
 import { VerifyComponent } from './modules/verify/verify.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { UserPageComponent } from './modules/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     AuthLayoutComponent,
     VerifyComponent,
     SpinnerComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserModule,

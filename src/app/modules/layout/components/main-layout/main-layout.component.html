@@ -1,12 +1,12 @@
 <div class="layout">
-    <app-spinner *ngIf="auth.loading" ></app-spinner>
+  <app-spinner *ngIf="auth.loading" ></app-spinner>
   
-    <div *ngIf="!auth.loading" >
-      <app-header></app-header>
-      <div class="private-layout" [ngSwitch]="pagePath" >
-          <div *ngSwitchCase="''">AAA</div>
-      </div>
+  <div *ngIf="!auth.loading" >
+    <app-header></app-header>
+    <div class="private-layout" [ngSwitch]="pagePath" >
+      <div *ngSwitchCase="''">AAA</div>
+      <app-user-page *ngSwitchCase="'user-page/carbonid1'"></app-user-page>
     </div>
-    
+  </div>
 </div>
   
