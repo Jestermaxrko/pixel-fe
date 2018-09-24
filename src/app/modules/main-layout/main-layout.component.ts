@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
-import { Auth } from '../../../models/auth';
+import { Auth } from '../../../models/auth.model';
 
 @Component({
   templateUrl: './main-layout.component.html',
 })
+
 export class MainLayoutComponent implements OnInit {
   auth: Auth;
   pagePath: String;
@@ -18,7 +19,7 @@ export class MainLayoutComponent implements OnInit {
 
   async ngOnInit () {
     const accessToken = window.localStorage.getItem('authToken');
-    await this.authService.getAuthState().subscribe((res): void => { this.auth = res; });
+    await this.authService.getAuthState().subscribe((res: any): void => { this.auth = res; });
 
     if (accessToken && !this.auth.isAuthorized) {
       this.authService.validateToken();

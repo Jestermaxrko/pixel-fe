@@ -9,20 +9,20 @@ import { AuthLayoutComponent } from './modules/auth-layout/auth-layout.component
 
 export const appRoutes: Routes = [
   {
-    path: 'auth', 
+    path: 'auth',
     component: AuthLayoutComponent,
     children: authLayoutRoutes,
-    canActivate: [ SignedOutGuard ],
+    canActivate: [SignedOutGuard],
   },
   {
-    path: '', 
+    path: '',
     component: MainLayoutComponent,
     children: mainLayoutRoutes,
-    canActivate: [ SignedInGuard ],
+    canActivate: [SignedInGuard],
   },
   {
     path: '**',
-    component: PageNotFoudComponent
+    component: PageNotFoudComponent,
   },
 ];
 

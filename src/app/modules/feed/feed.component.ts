@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
 
 export class FeedComponent {
   @Input() user: String;
-  constructor() {
-
-  }
+  
+  constructor() { }
 }

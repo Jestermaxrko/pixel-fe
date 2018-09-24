@@ -33,7 +33,7 @@ export class SearchInpComponent implements OnInit {
 
   handleSearch = (value): void => {
     if (!value.length) {
-      this.users.emit([ ]);
+      this.users.emit([]);
       return;
     }
     this.loading.emit(true);

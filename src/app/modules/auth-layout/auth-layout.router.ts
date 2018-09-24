@@ -6,18 +6,18 @@ export const authLayoutRoutes: Routes = [
   {
     path: '',
     redirectTo: 'sign-in',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
-  { 
-    path: 'sign-up', 
+  {
+    path: 'sign-up',
     component: AuthComponent,
   },
-  { 
-    path: 'sign-in', 
+  {
+    path: 'sign-in',
     component: AuthComponent,
   },
-  { 
-    path: 'verify', 
+  {
+    path: 'verify',
     component: VerifyComponent,
   },
 ];

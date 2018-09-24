@@ -6,6 +6,7 @@ import {
   MatProgressSpinnerModule,
   MatMenuModule,
   MatListModule,
+  MatDividerModule,
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -18,6 +19,7 @@ import { NgModule } from '@angular/core';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatListModule,
+    MatDividerModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -27,6 +29,7 @@ import { NgModule } from '@angular/core';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatListModule,
+    MatDividerModule,
   ],
 })
 export class MaterialModule { }

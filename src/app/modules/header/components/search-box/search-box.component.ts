@@ -4,7 +4,7 @@ import {
   HostListener,
   ElementRef,
 } from '@angular/core';
-import { env } from "../../../../../environments/environment";
+import { env } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-search-box',
@@ -13,7 +13,7 @@ import { env } from "../../../../../environments/environment";
 export class SearchBoxComponent implements OnInit {
   focus = false;
   loading = false;
-  users: object = [ ];
+  users: object = [];
   awsImage: string = env.awsImage;
 
   constructor(
@@ -29,7 +29,7 @@ export class SearchBoxComponent implements OnInit {
     if (this.eRef.nativeElement.contains(e.target)) {
       this.focus = true;
     } else {
-      this.users = [ ];
+      this.users = [];
       this.focus = false;
     }
   }

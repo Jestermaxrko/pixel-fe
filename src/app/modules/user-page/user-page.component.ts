@@ -4,12 +4,12 @@ import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-user-page',
-  templateUrl: './user-page.component.html'
+  templateUrl: './user-page.component.html',
 })
 export class UserPageComponent implements OnInit {
   nickname: string;
   authState: Object;
-  
+
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService) {
