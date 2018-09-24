@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthApi } from '../api/auth';
 import { Router } from '@angular/router';
@@ -28,14 +27,20 @@ export class AuthService {
     this.store.dispatch({ type: AUTH_LOADING });
     this.auth.signUp(email, nickname, password, passwordConf).subscribe(
       (res: any): void => this.store.dispatch({ type: SIGN_UP_SUCCESS, payload: res.text }),
-      (err): void => this.store.dispatch({ type: SIGN_UP_ERROR, payload: err.error.error }),
+      (err: any): void => {
+        if (err.status) {
+          this.store.dispatch({ type: SIGN_UP_ERROR, payload: err.error.error });
+        } else {
+          this.store.dispatch({ type: SIGN_UP_ERROR, payload: 'Server is not available' });
+        }
+      }
     );
   }
 
   verifyEmail = (hash: string) => {
     this.auth.verifyEmail(hash).subscribe(
       (res: any): void => this.store.dispatch({ type: VERIFY_SUCCESS, payload: res.user }),
-      (err): void => {
+      (err: any): void => {
         this.router.navigateByUrl('/sign-in');
         this.store.dispatch({ type: VERIFY_ERROR, payload: err.error.error });
       },
@@ -50,7 +55,13 @@ export class AuthService {
         window.localStorage.setItem('authToken', res.accessToken);
         this.store.dispatch({ type: SIGN_IN_SUCCESS, payload: res.user });
       },
-      (err): void => this.store.dispatch({ type: SIGN_IN_ERROR, payload: err.error.error }),
+      (err: any): void => {
+        if (err.status) {
+          this.store.dispatch({ type: SIGN_IN_ERROR, payload: err.error.error });
+        } else {
+          this.store.dispatch({ type: SIGN_IN_ERROR, payload: 'Server is not available' });
+        }
+      },
     );
   }
 
@@ -61,7 +72,8 @@ export class AuthService {
         this.router.navigateByUrl('/sign-in');
         this.store.dispatch({ type: SIGN_OUT });
       },
-      (): void => this.store.dispatch({ type: ERR }));
+      (): void => this.store.dispatch({ type: ERR })
+    );
   }
 
   validateToken = () => {

@@ -5,9 +5,7 @@ import { env } from '../environments/environment';
 
 @Injectable()
 export class SearchApi {
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) { }
 
   searchUsers = (): Observable<Object> => this.http.post(`${env.host}:${env.port}/search`, null);
 }

@@ -1,6 +1,7 @@
 .header {
   $_gap: 10px;
-  
+
+  height: 60px;
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid $light-grey;
@@ -15,6 +16,7 @@
 
   .logo {
     cursor: pointer;
+    align-self: center;
     justify-self: left;
     @include flexAlignCenter;
   }
@@ -27,6 +29,7 @@
     border-left: 1px solid #000;
     font-size: 20px;
     padding-left: $_gap;
+    margin: 0;
   }
 
   .search-container {

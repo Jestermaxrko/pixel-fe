@@ -8,16 +8,14 @@ import { Router } from '@angular/router';
 })
 export class VerifyComponent implements OnInit {
   authState: Object;
-  redirectTimer: number;
-  timerStarted: boolean;
+  redirectTimer: number = 5;
+  timerStarted: boolean = false;
   constructor(
     private authService: AuthService, 
     private router: Router) {
   }
 
   async ngOnInit() {
-    this.redirectTimer = 5;
-    this.timerStarted = false;
     await this.authService.getAuthState().subscribe((res: any) => { this.authState = res; });
     this.authService.verifyEmail(window.location.search);
   }
@@ -33,7 +31,8 @@ export class VerifyComponent implements OnInit {
             this.router.navigateByUrl('/sign-in');
           }
         },
-        1000);
+        1000
+      );
     }
   }
 }
