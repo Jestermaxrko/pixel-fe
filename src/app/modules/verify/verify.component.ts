@@ -10,6 +10,7 @@ export class VerifyComponent implements OnInit {
   authState: Object;
   redirectTimer: number = 5;
   timerStarted: boolean = false;
+  
   constructor(
     private authService: AuthService, 
     private router: Router) {
@@ -28,7 +29,7 @@ export class VerifyComponent implements OnInit {
           this.redirectTimer = this.redirectTimer - 1;
           if (this.redirectTimer === 0) {
             clearInterval(timer);
-            this.router.navigateByUrl('/sign-in');
+            this.router.navigateByUrl('/auth/sign-in');
           }
         },
         1000

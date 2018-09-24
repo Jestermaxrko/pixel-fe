@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../../services/auth.service';
-import { Auth } from '../../../../../models/auth';
+import { AuthService } from '../../../services/auth.service';
+import { Auth } from '../../../models/auth';
 
 @Component({
   templateUrl: './main-layout.component.html',
@@ -23,7 +23,5 @@ export class MainLayoutComponent implements OnInit {
     if (accessToken && !this.auth.isAuthorized) {
       this.authService.validateToken();
     }
-
-    if (!this.auth.isAuthorized && !this.auth.loading) { this.router.navigateByUrl('/sign-in'); }
   }
 }

@@ -1,12 +1,12 @@
-<div class="auth-page" [ngSwitch]="title">
+<div class="auth-page" [ngSwitch]="router.url">
   <div class="auth-wrapper">
     <div class="auth">
       <h1 class="auth__header">Pixel</h1>
-      <p *ngSwitchCase="'Sign up'" class="auth__text">
+      <p *ngSwitchCase="'/auth/sign-up'" class="auth__text">
         Sign up to see photos from your friends
       </p>
-      <app-sign-up-form *ngSwitchCase="'Sign up'"></app-sign-up-form>
-      <app-sign-in-form *ngSwitchCase="'Sign in'"></app-sign-in-form>
+      <app-sign-up-form *ngSwitchCase="'/auth/sign-up'"></app-sign-up-form>
+      <app-sign-in-form *ngSwitchCase="'/auth/sign-in'"></app-sign-in-form>
       <p class="auth__text">or</p>
       <form class="form--full-width">
         <button mat-raised-button type="button"
@@ -23,20 +23,20 @@
           Sign In with Facebook
         </button>
       </form>
-      <p *ngSwitchCase="'Sign in'">
-        <a [routerLink]="['/reset']" class="auth-link">Forgot password?</a>
+      <p *ngSwitchCase="'/auth/sign-in'">
+        <a [routerLink]="['/auth/reset']" class="auth-link">Forgot password?</a>
       </p>
     </div>
   </div>
 
   <div class="auth-link-wrapper">
-    <p *ngSwitchCase="'Sign up'">
+    <p *ngSwitchCase="'/auth/sign-up'">
       Have an account? 
-      <a [routerLink]="['/sign-in']" class="auth-link">Sign In</a>
+      <a [routerLink]="['/auth/sign-in']" class="auth-link">Sign In</a>
     </p>
-    <p *ngSwitchCase="'Sign in'">
+    <p *ngSwitchCase="'/auth/sign-in'">
       Don't have an account? 
-      <a [routerLink]="['/sign-up']" class="auth-link">Sign Up</a>
+      <a [routerLink]="['/auth/sign-up']" class="auth-link">Sign Up</a>
     </p>
   </div>
 </div>

@@ -23,10 +23,8 @@ import { InputValidatorsService } from '../services/input-validators.service';
 import { SignUpFormComponent } from './modules/auth/components/sign-up-form/sign-up-form.component';
 import { SignInFormComponent } from './modules/auth/components/sign-in-form/sign-in-form.component';
 import { ServerMsgComponent } from './shared/server-msg/server-msg.component';
-
 import { HeaderComponent } from './modules/header/header.component';
-import { MainLayoutComponent } from './modules/layout/components/main-layout/main-layout.component';
-import { AuthLayoutComponent } from './modules/layout/components/auth-layout/auth-layout.component';
+import { MainLayoutComponent } from './modules/main-layout/main-layout.component';
 import { HeaderNavComponent } from './modules/header/components/header-nav/header-nav.component';
 import { SearchBoxComponent } from './modules/header/components/search-box/search-box.component';
 import { SearchInpComponent } from './modules/header/components/search-inp/search-inp.component';
@@ -36,6 +34,8 @@ import { AppComponent } from './app.component';
 import { VerifyComponent } from './modules/verify/verify.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { UserPageComponent } from './modules/user-page/user-page.component';
+import { PageNotFoudComponent } from './modules/page-not-foud/page-not-foud.component';
+import { AuthLayoutComponent } from './modules/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -50,10 +50,11 @@ import { UserPageComponent } from './modules/user-page/user-page.component';
     SearchBoxComponent,
     SearchInpComponent,
     MainLayoutComponent,
-    AuthLayoutComponent,
     VerifyComponent,
     SpinnerComponent,
     UserPageComponent,
+    PageNotFoudComponent,
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,

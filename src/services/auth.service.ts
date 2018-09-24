@@ -16,8 +16,8 @@ export class AuthService {
   constructor(
     private store: Store<any>,
     private router: Router,
-    private auth: AuthApi,
-  ) { }
+    private auth: AuthApi) {
+  }
 
   getAuthState = (): Observable<any> => this.store.select('authReducer');
 
@@ -41,7 +41,7 @@ export class AuthService {
     this.auth.verifyEmail(hash).subscribe(
       (res: any): void => this.store.dispatch({ type: VERIFY_SUCCESS, payload: res.user }),
       (err: any): void => {
-        this.router.navigateByUrl('/sign-in');
+        this.router.navigateByUrl('/auth/sign-in');
         this.store.dispatch({ type: VERIFY_ERROR, payload: err.error.error });
       },
     );
@@ -51,7 +51,7 @@ export class AuthService {
     this.store.dispatch({ type: AUTH_LOADING });
     this.auth.signIn(email, password).subscribe(
       (res: any): void => {
-        this.router.navigateByUrl('/');
+        this.router.navigate(['/']);
         window.localStorage.setItem('authToken', res.accessToken);
         this.store.dispatch({ type: SIGN_IN_SUCCESS, payload: res.user });
       },
@@ -69,7 +69,7 @@ export class AuthService {
     this.auth.signOut().subscribe(
       (): void => {
         window.localStorage.removeItem('authToken');
-        this.router.navigateByUrl('/sign-in');
+        this.router.navigateByUrl('/auth/sign-in');
         this.store.dispatch({ type: SIGN_OUT });
       },
       (): void => this.store.dispatch({ type: ERR })
@@ -80,10 +80,13 @@ export class AuthService {
     this.store.dispatch({ type: LOADING });
     this.auth.validateToken().subscribe(
       (res: any) => {
-        this.router.navigateByUrl('/');
         this.store.dispatch({ type: SIGN_IN_SUCCESS, payload: res.user });
       },
       (err): void => this.store.dispatch({ type: SIGN_IN_ERROR, payload: err.error.error }),
     );
+  }
+
+  isSignedIn = () => {
+    return localStorage.getItem('authToken') !== null;
   }
 }

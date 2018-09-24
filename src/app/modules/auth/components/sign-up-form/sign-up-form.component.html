@@ -41,7 +41,6 @@
     <input matInput #password
       placeholder="Password" type="password"
       [formControl]="passwordInp"
-      (change)="setPassword(password.value)"
     >
     <mat-hint align="start">Min 6 characters</mat-hint>
     <mat-error class="mat-error" *ngIf="passwordInp.hasError('minlength')">
