@@ -1,0 +1,132 @@
+.post-footer {
+  $_activeColor: #5a46cf;
+  $_notActiveIcon: #0000008a;
+  padding: 0 5px;
+
+  .shine {
+    animation: colorchange 1.5s;
+
+    @keyframes colorchange {
+      0%   {background: rgba(247, 178, 99,1);}
+      100% {background: rgba(247, 178, 99, 0);}
+    }
+  }
+
+  .post-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: flex-start;
+    text-align: center;
+  }
+
+  .post-info__icon {
+    color: $_notActiveIcon;
+    font-size: 30px;
+  }
+
+  .post-info__likes {
+    margin-right: auto;
+    font-weight: 500;
+  }
+
+  .icon--like-active {
+    color: #ee1717;
+  }
+
+  .icon--like-noactive {
+    color: $_notActiveIcon;
+  }
+
+  .icon--ative{
+    color: $_activeColor;
+  }
+
+  .post-description {
+    margin: 3px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .post-description__icon {
+    margin-right: 5px;
+    color: $_activeColor;
+  }
+
+  .load-comments {
+    font-weight: 400;
+    margin: 4px 0;
+    color: #a09f9f;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .post-comments {
+    margin-bottom: 5px; 
+    overflow-y: auto;
+  }
+
+  .post-comments-comment {
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .post-comments__avatar {
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+  }
+
+  .post-comments__nickname {
+    font-weight: 500;
+    color: black;
+    margin: 2px 5px 2px 0;  
+  }
+
+  .post-comments__comment {
+    display: inline-block;
+    color: #333;
+    text-align: justify;
+  }
+
+  .post-date {
+    font-weight: 400;
+    color: #ccc;
+    margin-bottom: 10px; 
+  }
+
+  .separator{
+    margin: 20px 0; 
+  }
+
+  .leave-comment {
+    width: 100%;
+  }
+ 
+  .leave-comment__text-area {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+  }
+
+  .text-aria--blicked::-webkit-input-placeholder {
+    color: $_activeColor;
+    font-weight: 500;
+ }
+
+  .example-full-width {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+

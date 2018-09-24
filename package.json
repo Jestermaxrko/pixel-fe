@@ -29,6 +29,7 @@
     "core-js": "^2.5.4",
     "ngrx": "^2.0.1",
     "ngx-scrollbar": "^2.2.0",
+    "ngx-timeago": "^1.0.0",
     "rxjs": "^6.3.2",
     "rxjs-compat": "^6.3.2",
     "tslint-config-airbnb": "^5.11.0",

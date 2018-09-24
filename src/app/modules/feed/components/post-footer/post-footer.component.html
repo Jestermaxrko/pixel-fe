@@ -1,0 +1,59 @@
+<div class="post-footer">
+  <div class="post-info">
+    <p class="post-info__likes">{{post.likes.length}} likes </p>
+
+    <button mat-icon-button>
+      <i class="material-icons post-info__icon" (click)="changeLike()" [ngClass]="likedClass">
+        {{liked ?  'favorite':  'favorite_border'}} 
+      </i>
+    </button>
+
+    <button mat-icon-button (click)="activateTextArea()">
+        <i class="material-icons post-info__icon">comment</i>
+    </button>
+  </div>
+
+  <p class="post-description" *ngIf="post.description">
+    <i class="material-icons post-description__icon">label</i>
+    <span class="post-comments__comment">{{post.description}}</span>
+  </p>
+
+  <p class="load-comments" *ngIf="loadMoreComments" (click)="getMoreComments()">
+    {{loadAllComments ? ( 'View all comments: ' + post.comments.length ) : 'Load more comments'}}
+    <mat-icon>expand_more</mat-icon>
+  </p>
+
+  <p class="load-comments" *ngIf="hideAllComments" (click)="hideComments()">
+    Hide Comments
+    <mat-icon>expand_less</mat-icon>
+  </p>
+  
+  <div #comments class="post-comments">
+      <div class="post-comments-comment {{ (i === commentsToDisplay.length - 1 && addedCommentBlick) ? 'shine': ''}}" *ngFor="let comment of commentsToDisplay; index as i" >
+        <div>
+          <img class="post-comments__avatar" src="{{awsImage + '/' + comment.authorAvatar}}">
+        </div>
+        <div>
+          <span class="post-comments__nickname">{{comment.author}}: </span>
+          <span class="post-comments__comment">{{comment.comment}}</span>
+        </div>
+      </div>
+  </div>
+
+  {{addedCommentBlick ? navigateBottom() : null}}
+
+  <div class="post-date" timeago [date]="post.timestamp"></div>
+
+  <mat-divider class="separator"></mat-divider>
+
+  <form class="leave-comment">
+    <textarea
+      #textarea
+      (keydown.enter)="submitForm($event)"
+      (keyup) = "handleComment($event)"
+      class="leave-comment__text-area {{textAreaBlick ? 'text-aria--blicked' : ''}}" 
+      placeholder="Leave a comment"
+      value = "{{newCommentText}}"
+    ></textarea>
+  </form>
+</div>

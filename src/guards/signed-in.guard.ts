@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from "../services/auth.service";
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SignedInGuard implements CanActivate {
   constructor(
@@ -12,7 +12,7 @@ export class SignedInGuard implements CanActivate {
   }
 
   canActivate() {
-    if (this.auth.isSignedIn()) return true;
+    if (this.auth.isSignedIn()) { return true; }
     this.router.navigate(['/auth/sign-in']);
     return false;
   }

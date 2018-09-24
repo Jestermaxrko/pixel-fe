@@ -27,7 +27,7 @@ export class SignInFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.getAuthState().subscribe((res) => { this.authState = res; });
+    this.authService.getAuthState().subscribe((res: any): void => { this.authState = res; });
 
     this.localForm = this.fb.group({
       email: ['', Validators.compose([

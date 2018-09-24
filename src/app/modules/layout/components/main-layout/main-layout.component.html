@@ -1,0 +1,10 @@
+<div class="layout">
+    <app-spinner *ngIf="auth.loading" ></app-spinner>
+    <div *ngIf="!auth.loading" >
+      <app-header></app-header>
+      <div class="private-layout" [ngSwitch]="pagePath" >
+          <app-feed *ngSwitchCase="'/'"></app-feed>
+      </div>
+    </div>
+</div>
+  

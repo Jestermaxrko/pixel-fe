@@ -1,5 +1,6 @@
+import { Auth } from '../models/auth.model';
+import { Action } from '../models/action.model';
 
-import { Auth } from '../models/auth';
 import {
   SIGN_IN_SUCCESS, LOADING,
   SIGN_IN_ERROR, AUTH_LOADING, SIGN_OUT, ERR,
@@ -18,7 +19,7 @@ const initialState: Auth = {
   confMsg: '',
 };
 
-export function reducer(state = initialState, action): Auth {
+export function authReducer(state = initialState, action: Action): Auth {
   switch (action.type) {
     case SIGN_OUT:
       return initialState;
@@ -98,6 +99,11 @@ export function reducer(state = initialState, action): Auth {
         err: false,
         errMsg: '',
         confMsg: '',
+      };
+
+    case 'VALIDATE_ERROR':
+      return {
+        ...state,
       };
 
     default: return state;

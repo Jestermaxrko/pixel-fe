@@ -13,9 +13,11 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ScrollbarModule } from 'ngx-scrollbar';
+import { TimeagoModule } from 'ngx-timeago';
 // apis
 import { AuthApi } from '../api/auth';
 import { SearchApi } from '../api/search';
+import { PostsApi } from '../api/posts';
 // services
 import { AuthService } from '../services/auth.service';
 import { InputValidatorsService } from '../services/input-validators.service';
@@ -36,6 +38,10 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { UserPageComponent } from './modules/user-page/user-page.component';
 import { PageNotFoudComponent } from './modules/page-not-foud/page-not-foud.component';
 import { AuthLayoutComponent } from './modules/auth-layout/auth-layout.component';
+import { FeedlineComponent } from './modules/feed/components/feedline/feedline.component';
+import { PostComponent } from './modules/feed/components/post/post.component';
+import { PostHeaderComponent } from './modules/feed/components/post-header/post-header.component';
+import { PostFooterComponent } from './modules/feed/components/post-footer/post-footer.component';
 
 @NgModule({
   declarations: [
@@ -55,11 +61,16 @@ import { AuthLayoutComponent } from './modules/auth-layout/auth-layout.component
     UserPageComponent,
     PageNotFoudComponent,
     AuthLayoutComponent,
+    FeedlineComponent,
+    PostComponent,
+    PostHeaderComponent,
+    PostFooterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    TimeagoModule.forRoot(),
     MaterialModule,
     StoreModule.forRoot(reducers),
     BrowserAnimationsModule,
@@ -67,11 +78,15 @@ import { AuthLayoutComponent } from './modules/auth-layout/auth-layout.component
     FormsModule,
     ScrollbarModule,
   ],
+  exports: [
+    TimeagoModule,
+  ],
   providers: [
     AuthService,
     AuthApi,
     InputValidatorsService,
     SearchApi,
+    PostsApi,
   ],
   bootstrap: [AppComponent],
 })

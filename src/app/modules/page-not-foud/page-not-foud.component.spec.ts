@@ -8,7 +8,7 @@ describe('PageNotFoudComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageNotFoudComponent ]
+      declarations: [PageNotFoudComponent],
     })
     .compileComponents();
   }));

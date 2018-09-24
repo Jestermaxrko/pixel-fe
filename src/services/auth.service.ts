@@ -33,7 +33,7 @@ export class AuthService {
         } else {
           this.store.dispatch({ type: SIGN_UP_ERROR, payload: 'Server is not available' });
         }
-      }
+      },
     );
   }
 
@@ -54,6 +54,7 @@ export class AuthService {
         this.router.navigate(['/']);
         window.localStorage.setItem('authToken', res.accessToken);
         this.store.dispatch({ type: SIGN_IN_SUCCESS, payload: res.user });
+        this.store.dispatch({ type: 'CREATE_SESSION_POSTS', payload: res.user });
       },
       (err: any): void => {
         if (err.status) {
@@ -72,7 +73,7 @@ export class AuthService {
         this.router.navigateByUrl('/auth/sign-in');
         this.store.dispatch({ type: SIGN_OUT });
       },
-      (): void => this.store.dispatch({ type: ERR })
+      (): void => this.store.dispatch({ type: ERR }),
     );
   }
 
@@ -81,8 +82,13 @@ export class AuthService {
     this.auth.validateToken().subscribe(
       (res: any) => {
         this.store.dispatch({ type: SIGN_IN_SUCCESS, payload: res.user });
+        this.store.dispatch({ type: 'CREATE_SESSION_POSTS', payload: res.user });
       },
-      (err): void => this.store.dispatch({ type: SIGN_IN_ERROR, payload: err.error.error }),
+      (err): void => {
+        window.localStorage.removeItem('authToken');
+        this.router.navigateByUrl('/auth/sign-in');
+        this.store.dispatch({ type: SIGN_IN_ERROR, payload: 'session timeout' });
+      },
     );
   }
 

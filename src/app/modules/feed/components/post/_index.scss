@@ -1,0 +1,29 @@
+.post {
+  background-color: white;
+  border: solid 2px #ccc;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .image-container {
+    align-self: center;
+  }
+
+  .post-image {
+    width: 100%;
+  }
+}
+
+@include mQ(769px) {
+  .post {
+    width: 85%;
+  }
+}
+
+.post:first-child {
+  margin-top: 0;
+}
+
+
+

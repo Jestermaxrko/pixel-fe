@@ -32,6 +32,17 @@
   align-items: center;
 }
 
+@mixin customScrollBar {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #ccc; 
+    border-radius: 10px;
+  }
+}
+
 @mixin authBlock {
   background-color: #fff;
   border: 1px solid $light-grey;

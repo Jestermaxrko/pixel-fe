@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class VerifyComponent implements OnInit {
   authState: Object;
-  redirectTimer: number = 5;
-  timerStarted: boolean = false;
-  
+  redirectTimer = 5;
+  timerStarted = false;
+
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private router: Router) {
   }
 
@@ -32,7 +32,7 @@ export class VerifyComponent implements OnInit {
             this.router.navigateByUrl('/auth/sign-in');
           }
         },
-        1000
+        1000,
       );
     }
   }
