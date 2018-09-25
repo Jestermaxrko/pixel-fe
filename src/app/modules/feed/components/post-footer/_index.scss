@@ -7,8 +7,8 @@
     animation: colorchange 1.5s;
 
     @keyframes colorchange {
-      0%   {background: rgba(247, 178, 99,1);}
-      100% {background: rgba(247, 178, 99, 0);}
+      0%   {background: rgba(235, 252, 159, 1);}
+      100% {background: rgba(235, 252, 159, 0);}
     }
   }
 
@@ -78,6 +78,7 @@
     border-radius: 50%;
     width: 20px;
     height: 20px;
+    object-fit: cover;
   }
 
   .post-comments__nickname {

@@ -1,6 +1,25 @@
 <div class="feedline">
-  <app-post class="post" 
-    *ngFor="let post of feedLinePosts"
-    [post] = "post"
-  ></app-post>
+  <app-upstair-button 
+    class="feedline-upstair"
+    *ngIf="upstairShow"
+    (click)="navigateTop(scroll)"
+  ></app-upstair-button>
+  
+  <virtual-scroll 
+    #scroll 
+    class="feedline-scroll"
+    [items]="feedLinePosts"
+    [parentScroll]="scroll.window"
+    [enableUnequalChildrenSizes]="true"
+    [scrollThrottlingTime]="1000"
+    (vsEnd)="loadMoreComments($event)"
+    (vsStart)="checkUpstairButton($event)"
+  >
+    <app-post 
+      *ngFor="let item of scroll.viewPortItems"
+      class="post" 
+      [post] = "item"
+    ></app-post>
+  </virtual-scroll>
+
 </div>

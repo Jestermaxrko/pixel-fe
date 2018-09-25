@@ -10,13 +10,42 @@ import { Post } from '../../../../../models/post.model';
 
 export class FeedlineComponent implements OnInit {
   postsState: PostState;
+  allFeedLinePosts: Post[];
   feedLinePosts: Post[];
-  constructor( private postsService: PostsService) { }
+  initPostsLen = 5;
+  curPostsLen: number;
+  upstairShow = false;
 
+  constructor(private postsService: PostsService) { }
 
   ngOnInit() {
     this.postsService.getPostsState().subscribe((res): any => {
-      this.feedLinePosts = res.currentSessionPosts.filter((item: Post): boolean => item.type === 'feed');
+      this.curPostsLen = this.initPostsLen;
+      this.allFeedLinePosts = res.currentSessionPosts.filter((item: Post): boolean => item.type === 'feed');
+
+      // ------UNCOMMENT IF YOU HAVE LESS THAN 10 POSTS FOR VIRTUAL SCROLL-----//
+      // for(let i = 0; i < 5 ; i++) {
+      //   this.allFeedLinePosts = [...this.allFeedLinePosts, ...this.allFeedLinePosts];
+      // }
+
+      this.feedLinePosts = this.allFeedLinePosts.filter((item: Post, i: number): boolean =>  i < this.curPostsLen);
+
     });
   }
+
+  loadMoreComments = (e): void => {
+    if (e.end === this.feedLinePosts.length - 1) {
+      this.curPostsLen += this.initPostsLen;
+      this.feedLinePosts = this.allFeedLinePosts.filter((item, i) =>  i < this.curPostsLen);
+    }
+  }
+
+  checkUpstairButton = (e): void => {
+    if (e.start > 0) { this.upstairShow = true; } else { this.upstairShow = false; }
+  }
+
+  navigateTop = (scroll): void => {
+    scroll.scrollToIndex(0, true, 0, 2000);
+  }
+
 }
