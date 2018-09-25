@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-feed',
@@ -7,6 +7,5 @@ import { Component, Input } from '@angular/core';
 
 export class FeedComponent {
   @Input() user: String;
-
-  constructor() { }
+  @HostBinding('class') classes = 'feed';
 }

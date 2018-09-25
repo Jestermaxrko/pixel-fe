@@ -1,11 +1,11 @@
-import { authReducer } from './auth-reducer';
-import { postsReducer } from './post-reducer';
-import { Auth } from '../models/auth.model';
+import { authReducer } from './auth.reducer';
+import { postsReducer } from './post.reducer';
+import { AuthState } from '../models/auth-state.model';
 import { PostState } from '../models/posts-state.model';
 import { ActionReducerMap } from '@ngrx/store';
 
 interface AppState {
-  authReducer: Auth;
+  authReducer: AuthState;
   postsReducer: PostState;
 }
 

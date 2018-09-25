@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 import { env } from '../../../../../environments/environment';
 import { Post } from '../../../../../models/post.model';
 
@@ -7,11 +7,8 @@ import { Post } from '../../../../../models/post.model';
   templateUrl: './post-header.component.html',
 })
 
-export class PostHeaderComponent implements OnInit {
+export class PostHeaderComponent {
   @Input() post: Post;
+  @HostBinding('class') classes = 'post-header';
   awsImage: string = env.awsImage;
-
-  constructor() { }
-
-  ngOnInit() { }
 }

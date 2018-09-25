@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { FeedComponent } from '../feed/feed.component';
-import { UserPageComponent } from '../user-page/user-page.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 export const mainLayoutRoutes: Routes = [
   {
-    path: 'user-page/:nickname',
-    component: UserPageComponent,
+    path: 'profile/:nickname',
+    component: ProfileComponent,
   },
   {
     path: '',

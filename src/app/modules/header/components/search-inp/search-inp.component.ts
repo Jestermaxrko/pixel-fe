@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { SearchApi } from '../../../../../api/search';
+import { SearchApi } from '../../../../../api/search.api';
 import { SearchUser } from './search-user.model';
 
 @Component({

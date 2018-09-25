@@ -1,4 +1,4 @@
-.feedline{
+.feedline {
   width: 100%;
   margin: 40px 0; 
   height: 100vh;
@@ -14,10 +14,10 @@
 
 @include mQ(769px) {
   .feedline {
-    width: 67%;
+    width: 60%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
 
     &-upstair {
       display: block;

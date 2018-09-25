@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthApi } from '../api/auth';
+import { AuthApi } from '../api/auth.api';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import {
@@ -9,7 +9,7 @@ import {
   SIGN_UP_SUCCESS, SIGN_UP_ERROR,
   VERIFY_SUCCESS, VERIFY_ERROR,
   CLEAR_ERRORS,
-} from '../actions/auth';
+} from '../actions/auth.action';
 
 @Injectable()
 export class AuthService {

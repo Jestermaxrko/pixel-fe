@@ -5,7 +5,7 @@
     (click)="navigateTop(scroll)"
   ></app-upstair-button>
   
-  <virtual-scroll 
+  <virtual-scroller 
     #scroll 
     class="feedline-scroll"
     [items]="feedLinePosts"
@@ -20,6 +20,6 @@
       class="post" 
       [post] = "item"
     ></app-post>
-  </virtual-scroll>
+  </virtual-scroller>
 
 </div>

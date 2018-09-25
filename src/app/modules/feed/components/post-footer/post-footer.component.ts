@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Renderer2, HostBinding } from '@angular/core';
 import { AuthService } from '../../../../../services/auth.service';
 import { PostsService } from '../../../../../services/posts.service';
 import { env } from '../../../../../environments/environment';
@@ -15,6 +15,7 @@ export class PostFooterComponent implements OnInit {
   @Input() post: Post;
   @ViewChild('comments') commentsDiv;
   @ViewChild('textarea') textarea;
+  @HostBinding('class') classes = 'post-footer';
   awsImage: string = env.awsImage;
   user: User;
   liked: boolean;

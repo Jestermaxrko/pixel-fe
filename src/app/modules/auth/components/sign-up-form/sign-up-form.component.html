@@ -36,34 +36,37 @@
       Email is required
     </mat-error>
   </mat-form-field>
-  
-  <mat-form-field class="input--full-width">
-    <input matInput #password
-      placeholder="Password" type="password"
-      [formControl]="passwordInp"
-    >
-    <mat-hint align="start">Min 6 characters</mat-hint>
-    <mat-error class="mat-error" *ngIf="passwordInp.hasError('minlength')">
-      Password must be at least 6 characters long         
-    </mat-error>
-    <mat-error class="mat-error" *ngIf="passwordInp.hasError('required') && passwordInp.touched">
-      Password is required
-    </mat-error>
-  </mat-form-field>
 
-  <mat-form-field class="input--full-width">
-    <input matInput #confPassword
-      placeholder="Confirm Password" type="password"
-      [formControl]="confPasswordInp"
-    >
-    <mat-hint align="start">Passwors have to match</mat-hint>
-    <mat-error class="mat-error" *ngIf="confPasswordInp.hasError('passwordMismatch')">
-      Passwords don't match
-    </mat-error>
-    <mat-error class="mat-error" *ngIf="confPasswordInp.hasError('required') && confPasswordInp.touched">
-      Password confirmation is required
-    </mat-error>
-  </mat-form-field>
+  <!-- <div ngModelGroup="passwordGroup"> -->
+    <mat-form-field class="input--full-width">
+      <input matInput #password
+        placeholder="Password" type="password"
+        [formControl]="passwordInp"
+        (change)="confPasswordInp.updateValueAndValidity()"
+      >
+      <mat-hint align="start">Min 6 characters</mat-hint>
+      <mat-error class="mat-error" *ngIf="passwordInp.hasError('minlength')">
+        Password must be at least 6 characters long         
+      </mat-error>
+      <mat-error class="mat-error" *ngIf="passwordInp.hasError('required') && passwordInp.touched">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input--full-width">
+      <input matInput #confPassword
+        placeholder="Confirm Password" type="password"
+        [formControl]="confPasswordInp"
+      >
+      <mat-hint align="start">Passwors have to match</mat-hint>
+      <mat-error class="mat-error" *ngIf="confPasswordInp.hasError('passwordMismatch')">
+        Passwords don't match
+      </mat-error>
+      <mat-error class="mat-error" *ngIf="confPasswordInp.hasError('required') && confPasswordInp.touched">
+        Password confirmation is required
+      </mat-error>
+    </mat-form-field>
+  <!-- </div> -->
 
   <app-spinner 
     *ngIf="authState.authLoading"
