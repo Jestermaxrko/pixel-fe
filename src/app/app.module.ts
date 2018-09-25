@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { VirtualScrollModule } from 'ngx-virtual-scroller';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -42,6 +43,7 @@ import { FeedlineComponent } from './modules/feed/components/feedline/feedline.c
 import { PostComponent } from './modules/feed/components/post/post.component';
 import { PostHeaderComponent } from './modules/feed/components/post-header/post-header.component';
 import { PostFooterComponent } from './modules/feed/components/post-footer/post-footer.component';
+import { UpstairButtonComponent } from './shared/upstair-button/upstair-button.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,7 @@ import { PostFooterComponent } from './modules/feed/components/post-footer/post-
     PostComponent,
     PostHeaderComponent,
     PostFooterComponent,
+    UpstairButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,9 +80,11 @@ import { PostFooterComponent } from './modules/feed/components/post-footer/post-
     ReactiveFormsModule,
     FormsModule,
     ScrollbarModule,
+    VirtualScrollModule,
   ],
   exports: [
     TimeagoModule,
+    VirtualScrollModule,
   ],
   providers: [
     AuthService,

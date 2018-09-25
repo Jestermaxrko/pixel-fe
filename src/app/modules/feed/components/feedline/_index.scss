@@ -1,6 +1,15 @@
 .feedline{
   width: 100%;
-  margin-top: 10px; 
+  margin: 40px 0; 
+  height: 100vh;
+
+  &-scroll {
+    width: 100%; 
+  }
+
+  &-upstair {
+    display: none;
+  }
 }
 
 @include mQ(769px) {
@@ -9,6 +18,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
+    &-upstair {
+      display: block;
+    }
+
   }
 }
-

@@ -36,7 +36,7 @@ export class PostFooterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private postsService: PostsService,
-    private renderer: Renderer2) { 
+    private renderer: Renderer2) {
   }
 
   ngOnInit() {
