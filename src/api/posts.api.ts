@@ -15,10 +15,10 @@ export class PostsApi {
     return this.http.patch(`${env.host}:${env.port}/${type}-post`, { postId, userId }, { headers: this.httpService.getHeaders() });
   }
 
-  commentPost = (postId: string, userNickname: string, userAvatar: string, comment: string): Observable<any> => {
+  commentPost = (postId: string, userId: string, comment: string): Observable<any> => {
     return this.http.patch(
       `${env.host}:${env.port}/comment-post`,
-      { postId, userNickname, userAvatar, comment }, { headers: this.httpService.getHeaders() },
+      { postId, userId, comment }, { headers: this.httpService.getHeaders() },
     );
   }
 

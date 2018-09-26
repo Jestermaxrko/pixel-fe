@@ -7,7 +7,7 @@ export interface Post {
   description: string;
   geolocation: string;
   image: string;
-  likes: string[];
+  likes: userModel[];
   timestamp: number;
   type: string;
   deleted: boolean;

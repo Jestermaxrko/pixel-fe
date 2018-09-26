@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, Renderer2, HostBinding } from '@angular/core';
 import { AuthService } from '../../../../../services/auth.service';
 import { PostsService } from '../../../../../services/posts.service';
+import { ModalWindowService } from '../../../../../services/modal-window.service';
 import { env } from '../../../../../environments/environment';
 import { Post } from '../../../../../models/post.model';
 import { User } from '../../../../../models/user.model';
@@ -37,16 +38,18 @@ export class PostFooterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private postsService: PostsService,
-    private renderer: Renderer2) {
+    private renderer: Renderer2,
+    private modalService: ModalWindowService) {
   }
 
-  ngOnInit() {
+  ngOnInit () {
     this.authService.getAuthState().subscribe((res: any): void => {
       this.user = res.user;
     });
 
     this.displayLen = this.initCommentsLen;
-    this.liked = this.post.likes.includes(this.user._id);
+    this.liked = this.post.likes.findIndex((item: User): boolean => item._id === this.user._id) > -1;
+
     this.likedClass = this.liked ? ' icon--like-active' : ' icon--like-noactive';
 
     this.loadMoreComments = this.post.comments.length > this.displayLen;
@@ -96,12 +99,11 @@ export class PostFooterComponent implements OnInit {
     e.preventDefault();
     if (this.commentDebounce) { return; }
     if (this.newCommentText) {
-      this.postsService.commentPost(this.post._id, this.user.nickname, this.user.avatar, this.newCommentText);
+      this.postsService.commentPost(this.post._id, this.user._id, this.newCommentText);
 
       const newCommentObj: Comment = {
         comment: this.newCommentText,
-        author: this.user.nickname,
-        authorAvatar: this.user.avatar,
+        author: this.user,
       };
 
       this.post.comments = [...this.post.comments, newCommentObj];
@@ -130,5 +132,11 @@ export class PostFooterComponent implements OnInit {
 
   handleComment = (e: Event): void => {
     this.newCommentText = (<HTMLInputElement>e.target).value;
+  }
+
+  openLikesList = () => {
+    if (this.post.likes.length) {
+      this.modalService.openModal('users-list', { users: this.post.likes, title: 'Likes', icon: 'favorite' });
+    }
   }
 }

@@ -1,0 +1,9 @@
+<a class="item-container" [routerLink]="['/profile/'+ user.nickname]">
+  <div class="avatar">
+    <img class="item-container__photo" src="{{awsImage + '/' + user.avatar}}"/>
+  </div>
+  <div class="user-info">
+    <p class="item-container__nickname">{{user.nickname}}</p>
+    <p class="item-container__fullname">{{user?.fullName}}</p>
+  </div>
+</a>
