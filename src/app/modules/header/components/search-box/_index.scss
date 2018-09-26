@@ -29,6 +29,7 @@
   height: 150px;
   position: absolute;
   top: 30px;
+  overflow-y: scroll;
 
   .scrollbar__link {
     $_height: 50px;
@@ -46,6 +47,10 @@
     width: $_size;
     align-self: center;
     justify-self: center;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
   }
 }
 

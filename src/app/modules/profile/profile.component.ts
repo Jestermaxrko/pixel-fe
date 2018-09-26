@@ -3,10 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-user-page',
-  templateUrl: './user-page.component.html',
+  templateUrl: './profile.component.html',
 })
-export class UserPageComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   nickname: string;
   authState: Object;
 

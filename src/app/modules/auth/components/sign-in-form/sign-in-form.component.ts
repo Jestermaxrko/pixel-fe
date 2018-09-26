@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../../../services/auth.service';
 import { InputValidatorsService } from '../../../../../services/input-validators.service';
 import {
@@ -12,7 +12,7 @@ import {
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html',
 })
-export class SignInFormComponent implements OnInit {
+export class SignInFormComponent implements OnDestroy {
   serverMsg: string;
   serverMsgClass: string;
   localForm: FormGroup;
@@ -24,9 +24,6 @@ export class SignInFormComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private validators: InputValidatorsService) {
-  }
-
-  ngOnInit() {
     this.authService.getAuthState().subscribe((res: any): void => { this.authState = res; });
 
     this.localForm = this.fb.group({
@@ -50,9 +47,6 @@ export class SignInFormComponent implements OnInit {
   handleSubmit = (form: any): void => {
     if (this.localForm.valid) {
       this.authService.signIn(form.email, form.password);
-    } else {
-      this.serverMsg = 'Form is invalid';
-      this.serverMsgClass = 'server-msg--err';
     }
   }
 }

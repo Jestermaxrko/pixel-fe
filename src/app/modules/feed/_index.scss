@@ -1,3 +1,13 @@
+.feed {
+  display: flex;
+  justify-content: center;
+
+  .feed-container {
+    max-width: 940px;
+    width: 100%;
+  }
+}
+
 @import './components/feedline/index';
 @import './components/post/index';
 @import './components/post-header/index';

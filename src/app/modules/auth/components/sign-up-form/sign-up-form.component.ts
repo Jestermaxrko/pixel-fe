@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../../../services/auth.service';
 import {
   FormBuilder,
@@ -12,7 +12,7 @@ import { InputValidatorsService } from '../../../../../services/input-validators
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
 })
-export class SignUpFormComponent implements OnInit {
+export class SignUpFormComponent implements OnDestroy {
   localForm: FormGroup;
   nicknameInp: AbstractControl;
   emailInp: AbstractControl;
@@ -24,9 +24,6 @@ export class SignUpFormComponent implements OnInit {
     private fb: FormBuilder,
     private validators: InputValidatorsService,
     private authService: AuthService) {
-  }
-
-  async ngOnInit() {
     this.authService.getAuthState().subscribe((res: any): void => { this.authState = res; });
 
     this.localForm = this.fb.group({

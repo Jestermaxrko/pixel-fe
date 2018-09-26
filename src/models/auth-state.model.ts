@@ -1,4 +1,4 @@
-export interface Auth {
+export interface AuthState {
   isAuthorized: boolean;
   user: Object;
   loading: boolean;

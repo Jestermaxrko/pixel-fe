@@ -1,15 +1,13 @@
-<div class="post-header">
-  <div class="avatar">
-    <a [routerLink]="['/profile/' + post.author.nickname]">
-      <img 
-        alt="avatar-{{post.author._id}}" 
-        src="{{awsImage + '/' + post.author.avatar}}" 
-        class="post-header__avatar-image"
-      />
-    </a>
-  </div>
-  <div class="author">
-    <a  [routerLink]="['/profile/' + post.author.nickname]" class="post-header__nickname">{{post.author.nickname}}</a>
-    <p class="post-header__location">{{post.geolocation}}</p>
-  </div>
+<div class="avatar">
+  <a [routerLink]="['/profile/' + post.author.nickname]">
+    <img 
+      alt="avatar-{{post.author._id}}" 
+      src="{{awsImage + '/' + post.author.avatar}}" 
+      class="post-header__avatar-image"
+    />
+  </a>
+</div>
+<div class="author">
+  <a  [routerLink]="['/profile/' + post.author.nickname]" class="post-header__nickname">{{post.author.nickname}}</a>
+  <p class="post-header__location">{{post.geolocation}}</p>
 </div>

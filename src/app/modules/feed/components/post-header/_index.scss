@@ -1,9 +1,9 @@
 .post-header {
+  width: 95%;
+  justify-self: center;
   display: flex;
-  flex-direction: row;
-  width: 100%;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0 0;
 
   &__avatar-image {
     border-radius:50%;

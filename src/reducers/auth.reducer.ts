@@ -1,4 +1,4 @@
-import { Auth } from '../models/auth.model';
+import { AuthState } from '../models/auth-state.model';
 import { Action } from '../models/action.model';
 
 import {
@@ -7,9 +7,9 @@ import {
   SIGN_UP_SUCCESS, SIGN_UP_ERROR,
   VERIFY_SUCCESS, VERIFY_ERROR,
   CLEAR_ERRORS,
-} from '../actions/auth';
+} from '../actions/auth.action';
 
-const initialState: Auth = {
+const initialState: AuthState = {
   isAuthorized: false,
   user: null,
   loading: false,
@@ -19,7 +19,7 @@ const initialState: Auth = {
   confMsg: '',
 };
 
-export function authReducer(state = initialState, action: Action): Auth {
+export function authReducer(state = initialState, action: Action): AuthState {
   switch (action.type) {
     case SIGN_OUT:
       return initialState;
