@@ -1,0 +1,37 @@
+.post-page {
+  width: 100%;
+
+  .post {
+    width: 100%;
+    border: none;
+  }
+
+  @include mQ(769px) {
+    height: 90vh;
+    @include flexCenter;
+
+    .post {
+      min-width: 600px;
+      max-width: 940px;
+      border: solid 2px #ccc;
+      grid-template-columns: 1.8fr 1fr;
+      grid-template-areas: "image header" "image footer";
+    }
+
+    .post-header {
+      grid-area: header;
+      width: 90%;
+    }
+
+    .post-image {
+      grid-area: image;
+      align-self: center;
+      margin: 0;
+    }
+
+    .post-footer {
+      grid-area: footer;
+      width: 90%;
+    }
+  }
+}

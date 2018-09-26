@@ -21,4 +21,9 @@ export class PostsApi {
       { postId, userNickname, userAvatar, comment }, { headers: this.httpService.getHeaders() },
     );
   }
+
+  getSinglePost = (postId: string): Observable<any> => {
+    return this.http.get(`${env.host}:${env.port}/post/${postId}`, { headers: this.httpService.getHeaders() });
+  }
+
 }
