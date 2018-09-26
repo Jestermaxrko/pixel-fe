@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { PostsApi } from '../api/posts.api';
 import { Post } from '../models/post.model';
+import { dispatch } from '../../node_modules/rxjs/internal/observable/pairs';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,15 @@ export class PostsService {
   commentPost = (postId: string, userNickname: string, userAvatar: string, comment: string): void => {
     this.postsApi.commentPost(postId, userNickname, userAvatar, comment).subscribe(
       (res: any): void => this.store. dispatch({ type: 'COMMENT_ADDED_SUCCESS', payload: res.newComments }),
-      (err: any): void => this.store.dispatch({ type: 'LCOMMENT_ADDED_ERROR', payload: err }),
+      (err: any): void => this.store.dispatch({ type: 'COMMENT_ADDED_ERROR', payload: err }),
     );
   }
+
+  getSinglePost = (postId: string) => {
+    this.postsApi.getSinglePost(postId).subscribe(
+      (res: any): void => this.store.dispatch({ type: 'ADD_POST_TO_SESSION', payload: [ res.post ] }),
+      (err: any): void => this.store.dispatch( {type: 'POST_ADD_ERROR', payload: err })
+    )
+  }
+
 }

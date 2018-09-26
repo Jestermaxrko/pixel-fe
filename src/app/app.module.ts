@@ -43,6 +43,7 @@ import { PostComponent } from './modules/feed/components/post/post.component';
 import { PostHeaderComponent } from './modules/feed/components/post-header/post-header.component';
 import { PostFooterComponent } from './modules/feed/components/post-footer/post-footer.component';
 import { UpstairButtonComponent } from './shared/upstair-button/upstair-button.component';
+import { PostPageComponent } from './modules/post-page/post-page.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { UpstairButtonComponent } from './shared/upstair-button/upstair-button.c
     PostHeaderComponent,
     PostFooterComponent,
     UpstairButtonComponent,
+    PostPageComponent,
   ],
   imports: [
     BrowserModule,

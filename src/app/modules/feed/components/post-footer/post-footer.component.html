@@ -41,7 +41,9 @@
 
 {{addedCommentBlick ? navigateBottom() : null}}
 
-<div class="post-date" timeago [date]="post.timestamp"></div>
+<a [routerLink]="['/post/'+post._id]">
+  <div class="post-date" timeago [date]="post.timestamp"></div>
+</a>
 
 <mat-divider class="separator"></mat-divider>
 
