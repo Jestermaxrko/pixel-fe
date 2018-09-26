@@ -3,3 +3,5 @@ export interface Comment {
   author: string;
   authorAvatar: string;
 }
+
+export default Comment;

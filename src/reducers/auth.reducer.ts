@@ -1,13 +1,4 @@
-import { AuthState } from '../models/auth-state.model';
-import { Action } from '../models/action.model';
-
-import {
-  SIGN_IN_SUCCESS, LOADING,
-  SIGN_IN_ERROR, AUTH_LOADING, SIGN_OUT, ERR,
-  SIGN_UP_SUCCESS, SIGN_UP_ERROR,
-  VERIFY_SUCCESS, VERIFY_ERROR,
-  CLEAR_ERRORS,
-} from '../actions/auth.action';
+import { AuthState, Action } from '../models/redux.state.model';
 
 const initialState: AuthState = {
   isAuthorized: false,
@@ -21,10 +12,10 @@ const initialState: AuthState = {
 
 export function authReducer(state = initialState, action: Action): AuthState {
   switch (action.type) {
-    case SIGN_OUT:
+    case 'SIGN_OUT':
       return initialState;
 
-    case SIGN_IN_SUCCESS:
+    case 'SIGN_IN_SUCCESS':
       return {
         ...state,
         isAuthorized: true,
@@ -32,7 +23,7 @@ export function authReducer(state = initialState, action: Action): AuthState {
         loading: false,
       };
 
-    case SIGN_UP_SUCCESS:
+    case 'SIGN_UP_SUCCESS':
       return {
         ...state,
         isAuthorized: false,
@@ -42,8 +33,8 @@ export function authReducer(state = initialState, action: Action): AuthState {
         confMsg: action.payload,
       };
 
-    case SIGN_IN_ERROR:
-    case SIGN_UP_ERROR:
+    case 'SIGN_IN_ERROR':
+    case 'SIGN_UP_ERROR':
       return {
         ...state,
         isAuthorized: false,
@@ -53,7 +44,7 @@ export function authReducer(state = initialState, action: Action): AuthState {
         errMsg: action.payload,
       };
 
-    case VERIFY_SUCCESS:
+    case 'VERIFY_SUCCESS':
       return {
         ...state,
         isAuthorized: false,
@@ -63,7 +54,7 @@ export function authReducer(state = initialState, action: Action): AuthState {
         loading: false,
       };
 
-    case VERIFY_ERROR:
+    case 'VERIFY_ERROR':
       return {
         ...state,
         isAuthorized: false,
@@ -72,7 +63,7 @@ export function authReducer(state = initialState, action: Action): AuthState {
         loading: false,
       };
 
-    case AUTH_LOADING:
+    case 'AUTH_LOADING':
       return {
         ...state,
         err: false,
@@ -81,19 +72,19 @@ export function authReducer(state = initialState, action: Action): AuthState {
 
       };
 
-    case LOADING:
+    case 'LOADING':
       return {
         ...state,
         loading: true,
       };
 
-    case ERR:
+    case 'ERR':
       return {
         ...state,
         err: true,
       };
 
-    case CLEAR_ERRORS:
+    case 'CLEAR_ERRORS':
       return {
         ...state,
         err: false,

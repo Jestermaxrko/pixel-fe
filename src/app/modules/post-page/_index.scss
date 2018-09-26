@@ -13,6 +13,7 @@
     .post {
       min-width: 600px;
       max-width: 940px;
+      max-height: 600px;
       border: solid 2px #ccc;
       grid-template-columns: 1.8fr 1fr;
       grid-template-areas: "image header" "image footer";
@@ -21,12 +22,14 @@
     .post-header {
       grid-area: header;
       width: 90%;
+      align-self: start;
     }
 
     .post-image {
       grid-area: image;
       align-self: center;
       margin: 0;
+      max-height: 450px;
     }
 
     .post-footer {

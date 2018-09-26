@@ -3,18 +3,16 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { PostsApi } from '../api/posts.api';
 import { Post } from '../models/post.model';
-import { dispatch } from '../../node_modules/rxjs/internal/observable/pairs';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class PostsService {
   posts: Post[];
   constructor(
     private store: Store<any>,
-    private postsApi: PostsApi,
-  ) { }
+    private postsApi: PostsApi) {
+  }
 
   getPostsState = (): Observable<any> => this.store.select('postsReducer');
 
@@ -34,9 +32,8 @@ export class PostsService {
 
   getSinglePost = (postId: string) => {
     this.postsApi.getSinglePost(postId).subscribe(
-      (res: any): void => this.store.dispatch({ type: 'ADD_POST_TO_SESSION', payload: [ res.post ] }),
-      (err: any): void => this.store.dispatch( {type: 'POST_ADD_ERROR', payload: err })
-    )
+      (res: any): void => this.store.dispatch({ type: 'ADD_POST_TO_SESSION', payload: [res.post] }),
+      (err: any): void => this.store.dispatch({ type: 'POST_ADD_ERROR', payload: err }),
+    );
   }
-
 }

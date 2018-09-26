@@ -25,7 +25,7 @@
   <button mat-raised-button class="btn--full-width" *ngFor="let user of users"
     (click)="closeInput()"
   >
-    <a routerLink="{{ './profile/' + user.nickname }}" class="scrollbar__link">
+    <a routerLink="{{ '/profile/' + user.nickname }}" class="scrollbar__link">
       <img src="{{ awsImage + '/' + user.avatar }}" class="user-avatar" alt="">
       {{ user.nickname }}
     </a>

@@ -1,8 +1,8 @@
 <div class="main-layout-container">
-  <app-spinner *ngIf="auth.loading"></app-spinner>
-  <div class="main-layout" *ngIf="!auth.loading && auth.user">
+  <app-spinner *ngIf="authState.loading"></app-spinner>
+  <div class="main-layout" *ngIf="!authState.loading && authState.user && usersState.users">
     <app-header></app-header>
-    <router-outlet class="page-layout"></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </div>
   

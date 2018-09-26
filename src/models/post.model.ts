@@ -1,8 +1,9 @@
-import { Comment } from './comment.model';
-import { User } from './user.model';
+import commentModel from './comment.model';
+import userModel from './user.model';
+
 export interface Post {
-  author: User;
-  comments: Comment[];
+  author: userModel;
+  comments: commentModel[];
   description: string;
   geolocation: string;
   image: string;
@@ -12,3 +13,5 @@ export interface Post {
   deleted: boolean;
   _id: string;
 }
+
+export default Post;

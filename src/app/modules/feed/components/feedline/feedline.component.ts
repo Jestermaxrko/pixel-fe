@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../../../../../services/posts.service';
-import { PostState } from '../../../../../models/posts-state.model';
+import { PostState } from '../../../../../models/redux.state.model';
 import { Post } from '../../../../../models/post.model';
 
 @Component({
@@ -29,7 +29,6 @@ export class FeedlineComponent implements OnInit {
       // }
 
       this.feedLinePosts = this.allFeedLinePosts.filter((item: Post, i: number): boolean =>  i < this.curPostsLen);
-
     });
   }
 

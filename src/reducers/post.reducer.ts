@@ -1,7 +1,6 @@
-import { PostState } from '../models/posts-state.model';
+import { PostState, Action } from '../models/redux.state.model';
 import { User } from '../models/user.model';
 import { Post } from '../models/post.model';
-import { Action } from '../models/action.model';
 
 const initialState: PostState = {
   error: false,

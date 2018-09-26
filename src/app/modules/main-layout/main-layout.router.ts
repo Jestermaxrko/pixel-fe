@@ -15,7 +15,7 @@ export const mainLayoutRoutes: Routes = [
   {
     path: 'post/:id',
     component: PostPageComponent,
-  }
+  },
 ];
 
 export default mainLayoutRoutes;
