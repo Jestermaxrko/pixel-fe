@@ -16,6 +16,7 @@ export class UsersService {
   getUsersState = (): Observable<any> => this.store.select('usersReducer');
 
   loadCurrentFollowings = (user: userModel): void => {
+    console.log(user);
     this.store.dispatch({ type: 'LOAD_CURRENT_FOLLOWINGS', payload: user });
   }
 
