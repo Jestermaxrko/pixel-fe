@@ -1,7 +1,8 @@
+import { User } from './user.model';
+
 export interface Comment {
   comment: string;
-  author: string;
-  authorAvatar: string;
+  author: User;
 }
 
 export default Comment;

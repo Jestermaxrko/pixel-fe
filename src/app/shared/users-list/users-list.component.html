@@ -1,0 +1,24 @@
+  <div class="users-list-header">
+    <i class="material-icons users-list__icon">{{payload.icon}}</i>
+    <p>{{payload.title}}</p>
+    <button 
+      mat-icon-button 
+      class="header__close-btn"
+      (click) = "handeCloseModal()"
+    >
+      <i class="material-icons">close</i>
+    </button>
+  </div>
+
+  <virtual-scroller
+    #scroll 
+    class="scroll"
+    [items]="payload.users"
+    [enableUnequalChildrenSizes]="true"
+  >
+    <div class="users-list-item" *ngFor="let item of scroll.viewPortItems">
+      <app-user-item [user]="item"></app-user-item>
+    </div>
+
+  </virtual-scroller>
+

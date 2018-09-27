@@ -8,9 +8,6 @@ import { env } from '../../../environments/environment';
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
-  host: {
-    '(window:resize)': 'onLoad()',
-  },
 })
 export class PostPageComponent implements OnInit {
   @HostBinding('class') classes = 'post-page';

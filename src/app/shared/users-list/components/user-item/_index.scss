@@ -1,0 +1,38 @@
+.item-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2px 5px;
+  height: 45px;
+ 
+  &__photo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__nickname, &__fullname {
+    margin: 3px;
+  }
+
+  &__nickname {
+    font-weight: 400;
+    color: #333;
+  }
+
+  &__fullname {
+    color: #777272;
+    font-weight: 400; 
+    font-size: small;
+  }
+}
+
+.item-container:hover {
+  background-color: rgb(192, 233, 227);
+  border: none;
+}
+
+
+
+// 

@@ -46,5 +46,4 @@ export class FeedlineComponent implements OnInit {
   navigateTop = (scroll): void => {
     scroll.scrollToIndex(0, true, 0, 2000);
   }
-
 }

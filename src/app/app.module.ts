@@ -51,6 +51,9 @@ import { PostPageComponent } from './modules/post-page/post-page.component';
 import { DashboardComponent } from './modules/profile/components/dashboard/dashboard.component';
 import { FollowBtnComponent } from './shared/follow-btn/follow-btn.component';
 import { UnfollowBtnComponent } from './shared/unfollow-btn/unfollow-btn.component';
+import { ModalWindowComponent } from './modules/modal-window/modal-window.component';
+import { UsersListComponent } from './shared/users-list/users-list.component';
+import { UserItemComponent } from './shared/users-list/components/user-item/user-item.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,9 @@ import { UnfollowBtnComponent } from './shared/unfollow-btn/unfollow-btn.compone
     DashboardComponent,
     FollowBtnComponent,
     UnfollowBtnComponent,
+    ModalWindowComponent,
+    UsersListComponent,
+    UserItemComponent,
   ],
   imports: [
     BrowserModule,

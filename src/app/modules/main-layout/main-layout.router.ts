@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { FeedComponent } from '../feed/feed.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { PostPageComponent } from '../post-page/post-page.component';
+import { UsersListComponent } from '../../shared/users-list/users-list.component';
 
 export const mainLayoutRoutes: Routes = [
   {

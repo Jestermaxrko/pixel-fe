@@ -1,0 +1,54 @@
+.users-list {
+  width: 95%;
+  display: block;
+  margin: auto;
+  border: 2px solid #6fd6b4;
+  background-color: white;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    background-color:#6fd6b4;
+    margin: 0;
+    padding: 0 5px; 
+  }
+
+  .header__close-btn {
+    margin-left: auto;
+    color: rgb(185, 57, 57);
+  }
+
+  .scroll {
+    max-height: 300px;
+    width: 100%;
+  }
+}
+
+.users-list__icon {
+  color: #255d55;
+  margin-right: 5px; 
+}
+
+.users-list-item {
+  border-bottom: 1px solid aquamarine;
+}
+.users-list-item:last-child {
+  border: none;
+}
+
+@include mQ(426px) {
+  .users-list {
+    width: 60%;
+  }
+}
+
+@include mQ(769px) {
+  .users-list {
+    width: 30%;
+    
+    .scroll {
+      max-height: 500px;
+      width: 100%;
+    }
+  }
+}

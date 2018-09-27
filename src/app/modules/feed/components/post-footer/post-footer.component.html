@@ -1,5 +1,10 @@
 <div class="post-info">
-  <p class="post-info__likes">{{post.likes.length}} likes </p>
+  <p 
+    class="post-info__likes" 
+    (click)="openLikesList()"
+  > 
+    {{post.likes.length}} likes 
+  </p>
 
   <button mat-icon-button>
     <i class="material-icons post-info__icon" (click)="changeLike()" [ngClass]="likedClass">
@@ -30,10 +35,14 @@
 <div #comments class="post-comments">
     <div class="post-comments-comment {{ (i === commentsToDisplay.length - 1 && addedCommentBlick) ? 'shine': ''}}" *ngFor="let comment of commentsToDisplay; index as i" >
       <div>
-        <img class="post-comments__avatar" src="{{awsImage + '/' + comment.authorAvatar}}">
+        <a [routerLink]="['/profile/' + comment.author]">
+          <img class="post-comments__avatar" src="{{awsImage + '/' + comment.author.avatar}}">
+        </a>
       </div>
       <div>
-        <span class="post-comments__nickname">{{comment.author}}: </span>
+        <a [routerLink]="['/profile/' + comment.author]">
+          <span class="post-comments__nickname">{{comment.author.nickname}}: </span>
+        </a>
         <span class="post-comments__comment">{{comment.comment}}</span>
       </div>
     </div>
@@ -57,3 +66,5 @@
     value = "{{newCommentText}}"
   ></textarea>
 </form>
+
+

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { PostsApi } from '../api/posts.api';
 import { Post } from '../models/post.model';
@@ -23,8 +23,8 @@ export class PostsService {
     );
   }
 
-  commentPost = (postId: string, userNickname: string, userAvatar: string, comment: string): void => {
-    this.postsApi.commentPost(postId, userNickname, userAvatar, comment).subscribe(
+  commentPost = (postId: string, userId: string, comment: string): void => {
+    this.postsApi.commentPost(postId, userId, comment).subscribe(
       (res: any): void => this.store. dispatch({ type: 'COMMENT_ADDED_SUCCESS', payload: res.newComments }),
       (err: any): void => this.store.dispatch({ type: 'COMMENT_ADDED_ERROR', payload: err }),
     );

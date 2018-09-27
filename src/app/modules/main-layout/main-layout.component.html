@@ -2,6 +2,13 @@
   <app-spinner *ngIf="authState.loading"></app-spinner>
   <div class="main-layout" *ngIf="!authState.loading && authState.user && usersState.users">
     <app-header></app-header>
+    <app-modal-window 
+      *ngIf="modalState.isOpen" 
+      (click)="handleCloseModal()"
+      [modalName]="modalState.modalName"
+      [payload]="modalState.payload"
+      >
+    </app-modal-window>
     <router-outlet></router-outlet>
   </div>
 </div>
