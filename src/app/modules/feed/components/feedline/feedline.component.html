@@ -6,7 +6,8 @@
   ></app-upstair-button>
   
   <virtual-scroller 
-    #scroll 
+    #scroll
+    *ngIf="feedLinePosts.length"
     class="feedline-scroll"
     [items]="feedLinePosts"
     [parentScroll]="scroll.window"

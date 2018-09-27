@@ -14,13 +14,17 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { TimeagoModule } from 'ngx-timeago';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';  // devtolls extension
 // apis
 import { AuthApi } from '../api/auth.api';
 import { SearchApi } from '../api/search.api';
 import { PostsApi } from '../api/posts.api';
+import { UsersApi } from '../api/users.api';
 // services
 import { AuthService } from '../services/auth.service';
 import { InputValidatorsService } from '../services/input-validators.service';
+import { UsersService } from '../services/users.service';
+import { PostsService } from '../services/posts.service';
 // components
 import { SignUpFormComponent } from './modules/auth/components/sign-up-form/sign-up-form.component';
 import { SignInFormComponent } from './modules/auth/components/sign-in-form/sign-in-form.component';
@@ -44,6 +48,9 @@ import { PostHeaderComponent } from './modules/feed/components/post-header/post-
 import { PostFooterComponent } from './modules/feed/components/post-footer/post-footer.component';
 import { UpstairButtonComponent } from './shared/upstair-button/upstair-button.component';
 import { PostPageComponent } from './modules/post-page/post-page.component';
+import { DashboardComponent } from './modules/profile/components/dashboard/dashboard.component';
+import { FollowBtnComponent } from './shared/follow-btn/follow-btn.component';
+import { UnfollowBtnComponent } from './shared/unfollow-btn/unfollow-btn.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +76,9 @@ import { PostPageComponent } from './modules/post-page/post-page.component';
     PostFooterComponent,
     UpstairButtonComponent,
     PostPageComponent,
+    DashboardComponent,
+    FollowBtnComponent,
+    UnfollowBtnComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,16 +91,22 @@ import { PostPageComponent } from './modules/post-page/post-page.component';
     ReactiveFormsModule,
     FormsModule,
     VirtualScrollerModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 10,
+    }),
   ],
   exports: [
     TimeagoModule,
   ],
   providers: [
-    AuthService,
     AuthApi,
-    InputValidatorsService,
+    UsersApi,
     SearchApi,
     PostsApi,
+    UsersService,
+    PostsService,
+    AuthService,
+    InputValidatorsService,
   ],
   bootstrap: [AppComponent],
 })

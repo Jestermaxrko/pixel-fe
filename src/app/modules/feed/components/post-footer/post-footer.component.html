@@ -41,7 +41,7 @@
 
 {{addedCommentBlick ? navigateBottom() : null}}
 
-<a [routerLink]="['/post/'+post._id]">
+<a [routerLink]="['/post/'+post._id]" class="post-date__link">
   <div class="post-date" timeago [date]="post.timestamp"></div>
 </a>
 

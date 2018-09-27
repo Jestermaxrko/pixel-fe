@@ -1,4 +1,4 @@
-import { Post } from './post.model';
+import postModel from './post.model';
 
 export interface User {
   _id: string;
@@ -18,8 +18,10 @@ export interface User {
   password: string;
   googleID: string;
   facebookID: string;
-  posts: Post[];
+  posts: postModel[];
   followingsInfo: Object[];
   followings: Object[];
   followers: Object[];
 }
+
+export default User;

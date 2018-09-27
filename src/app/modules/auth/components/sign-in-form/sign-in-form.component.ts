@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../../../services/auth.service';
+import { AuthState } from '../../../../../models/redux.state.model';
 import { InputValidatorsService } from '../../../../../services/input-validators.service';
 import {
   FormBuilder,
@@ -18,13 +19,13 @@ export class SignInFormComponent implements OnDestroy {
   localForm: FormGroup;
   emailInp: AbstractControl;
   passwordInp: AbstractControl;
-  authState: Object;
+  authState: AuthState;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private validators: InputValidatorsService) {
-    this.authService.getAuthState().subscribe((res: any): void => { this.authState = res; });
+    this.authService.getAuthState().subscribe((res: AuthState): void => { this.authState = res; });
 
     this.localForm = this.fb.group({
       email: ['', Validators.compose([

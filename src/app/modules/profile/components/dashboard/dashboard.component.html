@@ -1,0 +1,13 @@
+<div [ngSwitch]="pageOwner">
+  <button mat-raised-button *ngSwitchCase="'signed in user'">Edit</button>
+  <app-follow-btn 
+    *ngSwitchCase="'random'" 
+    [currentUserID]="currentUser._id"
+    [signedInUserID]="signedInUser"
+  ></app-follow-btn>
+  <app-unfollow-btn 
+    *ngSwitchCase="'following'" 
+    [currentUser]="currentUser"
+    [signedInUserID]="signedInUser._id"
+  ></app-unfollow-btn>
+</div>

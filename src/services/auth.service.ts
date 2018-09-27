@@ -3,13 +3,6 @@ import { Observable } from 'rxjs';
 import { AuthApi } from '../api/auth.api';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import {
-  SIGN_IN_SUCCESS, LOADING,
-  SIGN_IN_ERROR, AUTH_LOADING, SIGN_OUT, ERR,
-  SIGN_UP_SUCCESS, SIGN_UP_ERROR,
-  VERIFY_SUCCESS, VERIFY_ERROR,
-  CLEAR_ERRORS,
-} from '../actions/auth.action';
 
 @Injectable()
 export class AuthService {
@@ -21,17 +14,17 @@ export class AuthService {
 
   getAuthState = (): Observable<any> => this.store.select('authReducer');
 
-  clearErrors = (): void => this.store.dispatch({ type: CLEAR_ERRORS });
+  clearErrors = (): void => this.store.dispatch({ type: 'CLEAR_ERRORS' });
 
   signUp = (email: string, nickname: string, password: string, passwordConf: string) => {
-    this.store.dispatch({ type: AUTH_LOADING });
+    this.store.dispatch({ type: 'AUTH_LOADING' });
     this.auth.signUp(email, nickname, password, passwordConf).subscribe(
-      (res: any): void => this.store.dispatch({ type: SIGN_UP_SUCCESS, payload: res.text }),
+      (res: any): void => this.store.dispatch({ type: 'SIGN_UP_SUCCESS', payload: res.text }),
       (err: any): void => {
         if (err.status) {
-          this.store.dispatch({ type: SIGN_UP_ERROR, payload: err.error.error });
+          this.store.dispatch({ type: 'SIGN_UP_ERROR', payload: err.error.error });
         } else {
-          this.store.dispatch({ type: SIGN_UP_ERROR, payload: 'Server is not available' });
+          this.store.dispatch({ type: 'SIGN_UP_ERROR', payload: 'Server is not available' });
         }
       },
     );
@@ -39,28 +32,28 @@ export class AuthService {
 
   verifyEmail = (hash: string) => {
     this.auth.verifyEmail(hash).subscribe(
-      (res: any): void => this.store.dispatch({ type: VERIFY_SUCCESS, payload: res.user }),
+      (res: any): void => this.store.dispatch({ type: 'VERIFY_SUCCESS', payload: res.user }),
       (err: any): void => {
         this.router.navigateByUrl('/auth/sign-in');
-        this.store.dispatch({ type: VERIFY_ERROR, payload: err.error.error });
+        this.store.dispatch({ type: 'VERIFY_ERROR', payload: err.error.error });
       },
     );
   }
 
   signIn = (email: string, password: string): void => {
-    this.store.dispatch({ type: AUTH_LOADING });
+    this.store.dispatch({ type: 'AUTH_LOADING' });
     this.auth.signIn(email, password).subscribe(
       (res: any): void => {
         this.router.navigate(['/']);
         window.localStorage.setItem('authToken', res.accessToken);
-        this.store.dispatch({ type: SIGN_IN_SUCCESS, payload: res.user });
+        this.store.dispatch({ type: 'SIGN_IN_SUCCESS', payload: res.user });
         this.store.dispatch({ type: 'CREATE_SESSION_POSTS', payload: res.user });
       },
       (err: any): void => {
         if (err.status) {
-          this.store.dispatch({ type: SIGN_IN_ERROR, payload: err.error.error });
+          this.store.dispatch({ type: 'SIGN_IN_ERROR', payload: err.error.error });
         } else {
-          this.store.dispatch({ type: SIGN_IN_ERROR, payload: 'Server is not available' });
+          this.store.dispatch({ type: 'SIGN_IN_ERROR', payload: 'Server is not available' });
         }
       },
     );
@@ -71,23 +64,23 @@ export class AuthService {
       (): void => {
         window.localStorage.removeItem('authToken');
         this.router.navigateByUrl('/auth/sign-in');
-        this.store.dispatch({ type: SIGN_OUT });
+        this.store.dispatch({ type: 'SIGN_OUT' });
       },
-      (): void => this.store.dispatch({ type: ERR }),
+      (): void => this.store.dispatch({ type: 'ERR' }),
     );
   }
 
   validateToken = () => {
-    this.store.dispatch({ type: LOADING });
+    this.store.dispatch({ type: 'LOADING' });
     this.auth.validateToken().subscribe(
       (res: any) => {
-        this.store.dispatch({ type: SIGN_IN_SUCCESS, payload: res.user });
+        this.store.dispatch({ type: 'SIGN_IN_SUCCESS', payload: res.user });
         this.store.dispatch({ type: 'CREATE_SESSION_POSTS', payload: res.user });
       },
       (err): void => {
         window.localStorage.removeItem('authToken');
         this.router.navigateByUrl('/auth/sign-in');
-        this.store.dispatch({ type: SIGN_IN_ERROR, payload: 'session timeout' });
+        this.store.dispatch({ type: 'SIGN_IN_ERROR', payload: 'session timeout' });
       },
     );
   }
