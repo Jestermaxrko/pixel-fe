@@ -54,6 +54,8 @@ import { UnfollowBtnComponent } from './shared/unfollow-btn/unfollow-btn.compone
 import { ModalWindowComponent } from './modules/modal-window/modal-window.component';
 import { UsersListComponent } from './shared/users-list/users-list.component';
 import { UserItemComponent } from './shared/users-list/components/user-item/user-item.component';
+import { UserPostsComponent } from './modules/profile/components/user-posts/user-posts.component';
+import { MinimizedPostComponent } from './modules/profile/components/minimized-post/minimized-post.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,8 @@ import { UserItemComponent } from './shared/users-list/components/user-item/user
     ModalWindowComponent,
     UsersListComponent,
     UserItemComponent,
+    UserPostsComponent,
+    MinimizedPostComponent,
   ],
   imports: [
     BrowserModule,

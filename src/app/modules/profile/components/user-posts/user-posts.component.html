@@ -1,0 +1,32 @@
+
+<div class="user-posts-header">
+    <div class="header-title">
+      <p class="header-title__name">Posts</p> 
+      <a *ngIf="ownPage" [routerLink]="['/upload']">
+        <i class="material-icons icon--add">add_a_photo</i>        
+      </a>
+  </div>
+</div>
+
+<div *ngIf="createdRows.length">
+  <div *ngFor="let row of createdRows" class="pics-row">
+    <app-minimized-post 
+    *ngFor="let post of row"
+    [post]="post" 
+    ></app-minimized-post>
+  </div>
+</div>
+
+<div class="empty-posts" *ngIf="!createdRows.length">
+    <p>
+      {{ownPage ? 'You have no posts' : 'This user has no posts'}}
+    </p>
+    <div>
+      <a *ngIf="ownPage" [routerLink]="['/upload']">
+        <i class="material-icons empty-posts__icon icon--add">add_a_photo</i>        
+      </a>
+
+      <i *ngIf="!ownPage" class="material-icons empty-posts__icon">broken_image</i>  
+    </div>
+</div>
+

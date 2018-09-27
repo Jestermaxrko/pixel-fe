@@ -1,0 +1,50 @@
+.user-posts {
+  display: block;
+  width: 100%;
+  margin: auto;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #13a58d;
+    margin-bottom: 10px;
+  }
+
+  .header-title__name{
+    margin: 2px;
+  }
+
+  .pics-row {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 100%;
+  }
+  
+  .empty-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .empty-posts__icon {
+    font-size: 50px; 
+  }
+
+  .icon--add:hover {
+    opacity: .2;
+  }
+
+}

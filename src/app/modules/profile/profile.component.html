@@ -1,5 +1,15 @@
-<app-dashboard 
+<div 
   *ngIf="!usersState.loading && currentUser" 
-  [currentUser]="currentUser"
-  [signedInUser]="authState.user"
-></app-dashboard>
+  class="user-page-container"
+>
+
+  <app-dashboard 
+    [currentUser]="currentUser"
+    [signedInUser]="authState.user"
+  ></app-dashboard>
+
+  <app-user-posts 
+    class="user-posts"
+    [currentUser]="currentUser"
+  ></app-user-posts>
+</div>
