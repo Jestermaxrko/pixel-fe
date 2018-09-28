@@ -3,7 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { UsersService } from '../../../services/users.service';
 import { AuthState, UsersState } from '../../../models/redux.state.model';
 import { ModalWindowService } from '../../../services/modal-window.service';
-import { ModalState } from '../../../models/modal-window-state.model';
+import { ModalState } from '../../../models/modal-window.state.model';
 
 @Component({
   templateUrl: './main-layout.component.html',

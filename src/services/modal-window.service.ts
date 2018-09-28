@@ -1,5 +1,5 @@
 import { Injectable  } from '@angular/core';
-import { ModalState } from '../models/modal-window-state.model';
+import { ModalState } from '../models/modal-window.state.model';
 import { BehaviorSubject } from 'rxjs';
 import 'rxjs/add/observable/of';
 

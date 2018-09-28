@@ -1,22 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../../../services/auth.service';
 import { AuthState, UsersState } from '../../../../../models/redux.state.model';
 import followingModel from '../../../../../models/following.model';
 import { User } from '../../../../../models/user.model';
 import { UsersService } from '../../../../../services/users.service';
+import { env } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
+  @HostBinding('class') classes = 'profile-dashboard';
   @Input() currentUser: any;
   @Input() signedInUser: User;
   paramsNickname = '';
   pageOwner: string;
   authState: AuthState;
   usersState: UsersState;
+  awsImage: string = env.awsImage;
 
   constructor(
     private route: ActivatedRoute,

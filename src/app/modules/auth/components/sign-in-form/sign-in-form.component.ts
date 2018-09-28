@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../services/auth.service';
 import { AuthState } from '../../../../../models/redux.state.model';
 import { InputValidatorsService } from '../../../../../services/input-validators.service';
@@ -13,7 +13,7 @@ import {
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html',
 })
-export class SignInFormComponent implements OnDestroy {
+export class SignInFormComponent implements OnDestroy, OnInit {
   serverMsg: string;
   serverMsgClass: string;
   localForm: FormGroup;
@@ -25,6 +25,9 @@ export class SignInFormComponent implements OnDestroy {
     private fb: FormBuilder,
     private authService: AuthService,
     private validators: InputValidatorsService) {
+  }
+
+  ngOnInit() {
     this.authService.getAuthState().subscribe((res: AuthState): void => { this.authState = res; });
 
     this.localForm = this.fb.group({

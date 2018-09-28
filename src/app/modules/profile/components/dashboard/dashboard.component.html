@@ -1,13 +1,49 @@
-<div [ngSwitch]="pageOwner">
-  <button mat-raised-button *ngSwitchCase="'signed in user'">Edit</button>
-  <app-follow-btn 
-    *ngSwitchCase="'random'" 
-    [currentUserID]="currentUser._id"
-    [signedInUserID]="signedInUser"
-  ></app-follow-btn>
-  <app-unfollow-btn 
-    *ngSwitchCase="'following'" 
-    [currentUser]="currentUser"
-    [signedInUserID]="signedInUser._id"
-  ></app-unfollow-btn>
+<div class="dashboard-container">
+  <div class="image-container">
+    <img src="{{ awsImage + '/' + currentUser.avatar }}" alt="avatar" class="image">
+  </div>
+
+  <p class="nickname">{{ currentUser.nickname }}</p>
+
+  <div [ngSwitch]="pageOwner" class="button">
+    <a mat-stroked-button color="primary" 
+      *ngSwitchCase="'signed in user'" routerLink="."
+    >Edit</a>
+    <app-follow-btn 
+      *ngSwitchCase="'random'" 
+      [currentUserID]="currentUser._id"
+      [signedInUserID]="signedInUser"
+    ></app-follow-btn>
+    <app-unfollow-btn 
+      *ngSwitchCase="'following'" 
+      [currentUser]="currentUser"
+      [signedInUserID]="signedInUser._id"
+    ></app-unfollow-btn>
+  </div>
+
+  <div class="about-info">
+    <p class="about-item" *ngIf="currentUser.fullName">
+      <span class="about-theme">Full Name: </span>{{ currentUser.fullName }}</p>
+    <p class="about-item" *ngIf="currentUser.website">
+      <span class="about-theme">Website: </span>
+      <a class="about__link" href="{{ 'https://' + currentUser.website }}">{{ currentUser.website }}</a>
+    </p>
+    <p class="about-item about-item-bio" *ngIf="currentUser.bio">
+      <span class="about-theme">About Me: </span>{{ currentUser.bio }}</p>
+  </div>
+
+  <div class="statistic">
+    <div class="statistic-posts">
+      <span class="statistic__number">{{ currentUser.posts.length }}</span>
+      <p class="statistic__description">Posts</p>
+    </div>
+    <div>
+      <span class="statistic__number">{{ currentUser.followers.length }}</span>
+      <p class="statistic__description">Followers</p>
+    </div>
+    <div class="statistic-followings">
+      <span class="statistic__number">{{ currentUser.followings.length }}</span>
+      <p class="statistic__description">Followings</p>
+    </div>
+  </div>
 </div>
