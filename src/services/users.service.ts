@@ -16,7 +16,6 @@ export class UsersService {
   getUsersState = (): Observable<any> => this.store.select('usersReducer');
 
   loadCurrentFollowings = (user: userModel): void => {
-    console.log(user);
     this.store.dispatch({ type: 'LOAD_CURRENT_FOLLOWINGS', payload: user });
   }
 
@@ -48,7 +47,6 @@ export class UsersService {
     this.store.dispatch({ type: 'USERS_LOADING' });
     this.usersApi.getProfile(nickname).subscribe(
       (res: any): void => {
-        console.log(res);
         this.store.dispatch({ type: 'GET_PROFILE_SUCCESS', payload: res.payload });
         this.store.dispatch({ type: 'ADD_POST_TO_SESSION', payload: res.payload.posts });
       },

@@ -27,6 +27,7 @@
     "@ngrx/store": "^6.1.0",
     "@ngrx/store-devtools": "^6.1.0",
     "core-js": "^2.5.4",
+    "hammerjs": "^2.0.8",
     "ngrx": "^2.0.1",
     "ngx-timeago": "^1.0.0",
     "ngx-virtual-scroller": "^1.0.3",

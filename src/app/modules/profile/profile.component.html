@@ -1,8 +1,4 @@
-<div 
-  *ngIf="!usersState.loading && currentUser" 
-  class="user-page-container"
->
-
+<div *ngIf="!usersState.loading && currentUser" class="profile-container">
   <app-dashboard 
     [currentUser]="currentUser"
     [signedInUser]="authState.user"
@@ -13,3 +9,4 @@
     [currentUser]="currentUser"
   ></app-user-posts>
 </div>
+

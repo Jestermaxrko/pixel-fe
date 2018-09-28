@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   HostListener,
   ElementRef,
 } from '@angular/core';

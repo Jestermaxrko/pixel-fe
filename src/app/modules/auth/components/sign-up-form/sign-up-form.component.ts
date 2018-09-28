@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../services/auth.service';
 import { AuthState } from '../../../../../models/redux.state.model';
 import {
@@ -13,7 +13,7 @@ import { InputValidatorsService } from '../../../../../services/input-validators
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
 })
-export class SignUpFormComponent implements OnDestroy {
+export class SignUpFormComponent implements OnDestroy, OnInit {
   localForm: FormGroup;
   nicknameInp: AbstractControl;
   emailInp: AbstractControl;
@@ -25,6 +25,9 @@ export class SignUpFormComponent implements OnDestroy {
     private fb: FormBuilder,
     private validators: InputValidatorsService,
     private authService: AuthService) {
+  }
+
+  ngOnInit() {
     this.authService.getAuthState().subscribe((res: AuthState): void => { this.authState = res; });
 
     this.localForm = this.fb.group({

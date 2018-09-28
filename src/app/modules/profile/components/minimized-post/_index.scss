@@ -62,7 +62,7 @@
 @include mQ(520px) {
   .mini-post {
     height: 180px;
-    padding: 5px
+    padding: 5px;
   }
 }
 
@@ -70,7 +70,6 @@
 @include mQ(650px) {
   .mini-post {
     height: 250px;
-    padding: 5px
   }
 }
 
