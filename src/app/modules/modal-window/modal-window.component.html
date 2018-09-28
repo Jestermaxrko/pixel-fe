@@ -2,6 +2,11 @@
     *ngIf="modalName==='users-list'"
     [payload]="payload"
     (click)="stopClosing($event)"
-  >
-  </app-users-list>
+  ></app-users-list>
+
+  <app-post-viewer
+    *ngIf="modalName==='post-viewer'"
+    [payload]="payload"
+    (click)="stopClosing($event)"
+  ></app-post-viewer>
 

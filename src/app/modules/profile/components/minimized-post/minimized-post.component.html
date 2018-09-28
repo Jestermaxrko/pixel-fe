@@ -1,5 +1,5 @@
-<a [routerLink]="['/post/' + post._id]">
-  <div class="photo-wrapper">
+<!-- <a [routerLink]="['/post/' + post._id]"> -->
+  <div class="photo-wrapper" (click)="handeOpenPostViewer()">
     
         <img class="mini-post__image" alt="user-img" src="{{awsImage + '/' + post.image}}" />
 
@@ -16,4 +16,4 @@
       </div>
     </div>           
   </div>
-</a>
+<!-- </a> -->

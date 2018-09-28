@@ -1,4 +1,6 @@
 import { Component, Input, OnChanges, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalWindowService } from '../../../../../services/modal-window.service';
 import { AuthState } from '../../../../../models/redux.state.model';
 import { AuthService } from '../../../../../services/auth.service';
 import { Post } from '../../../../../models/post.model';
@@ -16,7 +18,11 @@ export class UserPostsComponent implements OnChanges {
   ownPage: boolean;
   createdRows: Post[][] = [];
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private modalService: ModalWindowService,
+    private router: Router) {
+  }
 
   ngOnChanges() {
     this.authService.getAuthState().subscribe((res: AuthState): void => { this.authState = res; });
@@ -42,6 +48,14 @@ export class UserPostsComponent implements OnChanges {
         rows = [...rows, row];
       }
       this.createdRows = rows;
-    }
+    } else { this.createdRows = []; }
+  }
+
+  openPostViewer = (selectedPostId: string) => {
+    const posts: Post[] = this.currentUser.posts;
+    const selectedIndex: number = posts.findIndex(item =>  item._id === selectedPostId);
+    const postLink = `/post/${posts[selectedIndex]._id}`;
+    this.router.navigateByUrl(postLink);
+    this.modalService.openModal('post-viewer', this.router.url, { posts, index: selectedIndex });
   }
 }

@@ -12,14 +12,15 @@ export class ModalWindowService {
     isOpen: false,
     modalName: '',
     payload: null,
+    modalHolder: '',
   };
 
   state: BehaviorSubject<ModalState> = new BehaviorSubject<ModalState>(this.initialState);
 
   getModalState = () => this.state.asObservable();
 
-  openModal = (modalName: string, payload?: any) => {
-    this.state.next({ payload, modalName, isOpen: true });
+  openModal = (modalName: string, modalHolder: string , payload?: any) => {
+    this.state.next({ payload, modalName, modalHolder, isOpen: true });
   }
 
   closeModal = () => {

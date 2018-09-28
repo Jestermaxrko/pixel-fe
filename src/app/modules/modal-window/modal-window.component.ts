@@ -15,8 +15,10 @@ export class ModalWindowComponent {
   constructor(
     private modalService: ModalWindowService,
     private router: Router) {
-    this.router.events.subscribe(() => {
-      this.modalService.closeModal();
+    this.router.events.subscribe((event) => {
+      if (event.constructor.name === 'NavigationStart') {
+        this.modalService.closeModal();
+      }
     });
   }
 
