@@ -1,3 +1,9 @@
 @import './components/minimized-post/index';
 @import './components/user-posts/index';
 @import './components/dashboard/index';
+@import './components/post-viewer/index';
+
+.user-page-container {
+  max-width: 940px;
+  margin: auto;
+}

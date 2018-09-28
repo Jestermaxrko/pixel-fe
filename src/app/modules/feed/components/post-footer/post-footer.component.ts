@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChild, Renderer2, HostBinding } from '@angular/core';
+import { Component, OnChanges, Input, ViewChild, Renderer2, HostBinding } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../../../services/auth.service';
 import { PostsService } from '../../../../../services/posts.service';
 import { ModalWindowService } from '../../../../../services/modal-window.service';
@@ -12,7 +13,7 @@ import { Comment } from '../../../../../models/comment.model';
   templateUrl: './post-footer.component.html',
 })
 
-export class PostFooterComponent implements OnInit {
+export class PostFooterComponent implements OnChanges {
   @Input() post: Post;
   @ViewChild('comments') commentsDiv;
   @ViewChild('textarea') textarea;
@@ -36,13 +37,14 @@ export class PostFooterComponent implements OnInit {
   newCommentTimer: any;
 
   constructor(
+    private router: Router,
     private authService: AuthService,
     private postsService: PostsService,
     private renderer: Renderer2,
     private modalService: ModalWindowService) {
   }
 
-  ngOnInit () {
+  ngOnChanges () {
     this.authService.getAuthState().subscribe((res: any): void => {
       this.user = res.user;
     });
@@ -93,6 +95,12 @@ export class PostFooterComponent implements OnInit {
     this.liked = !this.liked;
     this.likedClass = this.liked ? ' icon--like-active' : ' icon--like-noactive';
     this.postsService.likePost(this.post._id, this.user._id, type);
+
+    if (type === 'like') {
+      this.post.likes = [...this.post.likes, this.user];
+    } else {
+      this.post.likes = this.post.likes.filter(item => item._id !== this.user._id);
+    }
   }
 
   submitForm = (e: Event): void => {
@@ -136,7 +144,11 @@ export class PostFooterComponent implements OnInit {
 
   openLikesList = () => {
     if (this.post.likes.length) {
-      this.modalService.openModal('users-list', { users: this.post.likes, title: 'Likes', icon: 'favorite' });
+      this.modalService.openModal(
+        'users-list',
+        this.router.url,
+        { users: this.post.likes, title: 'Likes', icon: 'favorite' },
+      );
     }
   }
 }

@@ -4,6 +4,7 @@ import { UsersService } from '../../../services/users.service';
 import { AuthState, UsersState } from '../../../models/redux.state.model';
 import { ModalWindowService } from '../../../services/modal-window.service';
 import { ModalState } from '../../../models/modal-window.state.model';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './main-layout.component.html',
@@ -17,7 +18,8 @@ export class MainLayoutComponent implements OnInit {
   constructor (
     private authService: AuthService,
     private usersService: UsersService,
-    private modalService: ModalWindowService) {
+    private modalService: ModalWindowService,
+    private router: Router) {
   }
 
   ngOnInit () {
@@ -38,6 +40,7 @@ export class MainLayoutComponent implements OnInit {
   }
 
   handleCloseModal = () => {
+    this.router.navigateByUrl(this.modalState.modalHolder);
     this.modalService.closeModal();
   }
 }

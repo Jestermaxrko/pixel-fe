@@ -35,12 +35,12 @@
 <div #comments class="post-comments">
     <div class="post-comments-comment {{ (i === commentsToDisplay.length - 1 && addedCommentBlick) ? 'shine': ''}}" *ngFor="let comment of commentsToDisplay; index as i" >
       <div>
-        <a [routerLink]="['/profile/' + comment.author]">
+        <a [routerLink]="['/profile/' + comment.author.nickname]">
           <img class="post-comments__avatar" src="{{awsImage + '/' + comment.author.avatar}}">
         </a>
       </div>
       <div>
-        <a [routerLink]="['/profile/' + comment.author]">
+        <a [routerLink]="['/profile/' + comment.author.nickname]">
           <span class="post-comments__nickname">{{comment.author.nickname}}: </span>
         </a>
         <span class="post-comments__comment">{{comment.comment}}</span>

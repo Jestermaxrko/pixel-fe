@@ -1,2 +1,7 @@
 <app-spinner *ngIf="!post" [size]="50"></app-spinner>
-<app-post *ngIf="post" [post]="post"></app-post>
+<app-post *ngIf="post && showPostPage" [post]="post"></app-post>
+
+<app-profile 
+  *ngIf="modalState.isOpen && !showPostPage" 
+  [nickFromPost]="post.author.nickname"
+></app-profile>

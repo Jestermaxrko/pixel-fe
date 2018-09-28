@@ -1,6 +1,6 @@
 <div class="user-posts-wrapper">
   <div class="user-posts-container">
-    <div class="user-posts-header">
+    <div *ngIf="createdRows.length" class="user-posts-header">
         <div class="header-title">
           <p class="header-title__name">Posts</p> 
           <a *ngIf="ownPage" [routerLink]="['/upload']">
@@ -12,8 +12,9 @@
     <div *ngIf="createdRows.length">
       <div *ngFor="let row of createdRows" class="pics-row">
         <app-minimized-post 
-        *ngFor="let post of row"
-        [post]="post" 
+          (postViewerOpen)="openPostViewer($event)"
+          *ngFor="let post of row"
+          [post]="post" 
         ></app-minimized-post>
       </div>
     </div>

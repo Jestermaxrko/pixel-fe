@@ -13,7 +13,7 @@ import { env } from '../../../../../environments/environment';
 })
 export class DashboardComponent implements OnInit {
   @HostBinding('class') classes = 'profile-dashboard';
-  @Input() currentUser: any;
+  @Input() currentUser: User;
   @Input() signedInUser: User;
   paramsNickname = '';
   pageOwner: string;
@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
         this.checkOwner(this.paramsNickname);
       }
     });
+
     this.route.params.subscribe((params: any): void => {
       this.paramsNickname = params['nickname'];
       this.checkOwner(this.paramsNickname);
@@ -47,7 +48,7 @@ export class DashboardComponent implements OnInit {
       return;
     }
 
-    const isFollowing = this.usersState.users.some((user: followingModel): boolean => {
+    const isFollowing: boolean = this.usersState.users.some((user: followingModel): boolean => {
       return user.nickname === paramsNickname && user.following;
     });
     if (isFollowing) {

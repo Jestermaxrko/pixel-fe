@@ -56,6 +56,7 @@ import { UsersListComponent } from './shared/users-list/users-list.component';
 import { UserItemComponent } from './shared/users-list/components/user-item/user-item.component';
 import { UserPostsComponent } from './modules/profile/components/user-posts/user-posts.component';
 import { MinimizedPostComponent } from './modules/profile/components/minimized-post/minimized-post.component';
+import { PostViewerComponent } from './modules/profile/components/post-viewer/post-viewer.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { MinimizedPostComponent } from './modules/profile/components/minimized-p
     UserItemComponent,
     UserPostsComponent,
     MinimizedPostComponent,
+    PostViewerComponent,
   ],
   imports: [
     BrowserModule,

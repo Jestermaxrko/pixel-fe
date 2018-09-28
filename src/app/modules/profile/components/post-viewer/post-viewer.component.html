@@ -1,0 +1,25 @@
+
+<div class="post-viewer-container">
+  <div 
+    class="navigation-panel {{ leftButton ? '': 'panel--disabled' }}" 
+    (click)="changePost(-1)"
+  >
+    <i class="material-icons navigation-panel__icon {{ leftButton ? '': 'icon--disabled' }}">
+      navigate_before
+    </i>
+  </div>
+  <app-post [post]="payload.posts[curIndex]"></app-post>
+  <div 
+    class="navigation-panel {{ rightButton ? '': 'panel--disabled' }}" 
+    (click)="changePost(1)"
+  >
+    <i class="material-icons navigation-panel__icon {{ rightButton ? '': 'icon--disabled' }}" >
+      navigate_next
+    </i>
+  </div>
+</div>
+
+
+
+
+

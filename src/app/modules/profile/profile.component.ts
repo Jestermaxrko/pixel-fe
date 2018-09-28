@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UsersService } from '../../../services/users.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersState, AuthState } from '../../../models/redux.state.model';
@@ -6,8 +6,10 @@ import { AuthService } from '../../../services/auth.service';
 
 @Component({
   templateUrl: './profile.component.html',
+  selector: 'app-profile',
 })
 export class ProfileComponent implements OnInit {
+  @Input() nickFromPost: string;
   usersState: UsersState;
   authState: AuthState;
   paramsNickname = '';
@@ -26,7 +28,7 @@ export class ProfileComponent implements OnInit {
     });
 
     this.route.params.subscribe((params: any): void => {
-      this.paramsNickname = params['nickname'];
+      this.paramsNickname = params['nickname'] || this.nickFromPost;
       this.findCurrentUser();
       const isInArr = this.usersState.users.some((item: any): boolean => item.nickname === this.paramsNickname);
       if (isInArr) { return; }
