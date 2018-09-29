@@ -1,0 +1,28 @@
+<mat-accordion class="expansion-panel">
+  <mat-expansion-panel *ngFor="let user of users">
+    <mat-expansion-panel-header>
+      <div class="{{ 'chip chip--' + user.status }}">
+        <img
+          src="{{ awsImage + '/' + user.avatar }}"
+          alt="avatar"
+          class="avatar" 
+        >
+        <p class="nickname">
+          {{ user.nickname }}
+        </p>
+      </div>  
+    </mat-expansion-panel-header>
+    <div class="expansion-panel-footer">
+      <a mat-stroked-button color="primary" class="btn messenger-btn" 
+        routerLink="." matBadgeSize="small" matBadge="{{ user.newMessages }}" 
+        matBadgeColor="warn" matBadgeHidden="{{ user.newMessages === 0 }}"
+      ><i class="material-icons">email</i></a>
+      <button mat-icon-button color="primary" class="btn"
+        [routerLink]="['/profile/' + user.nickname]"
+      >
+        <mat-icon>account_box</mat-icon>
+      </button>
+      <app-like-btn class="favorite-btn" [like]="user.favorite" [infoID]="user.followingInfoId"></app-like-btn>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

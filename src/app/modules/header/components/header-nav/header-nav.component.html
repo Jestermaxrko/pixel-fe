@@ -7,7 +7,7 @@
 </style>
 
 <i class="material-icons header__icon" [matMenuTriggerFor]="headerMenu">extension</i>
-<mat-menu #headerMenu="matMenu">
+<mat-menu #headerMenu="matMenu" [xPosition]="'before'" [yPosition]="'below'">
   <button mat-menu-item
     routerLink="{{ '/profile/' + auth.user.nickname }}"
   >

@@ -22,4 +22,8 @@ export class UsersApi {
   getProfile = (nickname: string): Observable<Object> => {
     return this.http.get(`${env.host}:${env.port}/profile/get-profile/${nickname}`, { headers: this.httpService.getHeaders() });
   }
+
+  handleFavorite = (data: object): Observable<Object> => {
+    return this.http.patch(`${env.host}:${env.port}/followings/handle-favorite`, data, { headers: this.httpService.getHeaders() });
+  }
 }

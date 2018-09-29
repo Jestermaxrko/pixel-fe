@@ -1,0 +1,12 @@
+<div class="feed-aside__container">
+  <mat-card class="user-info">
+    <a class="img__container" [routerLink]="['/profile/' + authState.user.nickname]">
+      <img class="user-avatar" src="{{awsImage + '/' + authState.user.avatar}}" alt="avatar">
+    </a>
+    <a class="nickname__container" [routerLink]="['/profile/' + authState.user.nickname]">
+      <p class="user-nickname">{{ authState.user.nickname }}</p>
+    </a>
+  </mat-card>
+  <mat-divider class="divider"></mat-divider>
+  <app-followings-list [users]="followings" [awsImage]="awsImage"></app-followings-list>
+</div>

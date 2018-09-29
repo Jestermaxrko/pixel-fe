@@ -53,6 +53,15 @@ const follow = (users, payload) => {
   });
 };
 
+const handleFavorite = (users, payload) => {
+  return users.map((item: any): any => {
+    if (item.followingInfoId === payload.followingInfoId) {
+      item.favorite = payload.like;
+    }
+    return item;
+  });
+};
+
 export function usersReducer(state: UsersState = initialState, action: Action) {
   switch (action.type) {
     case 'LOAD_CURRENT_FOLLOWINGS':
@@ -75,6 +84,14 @@ export function usersReducer(state: UsersState = initialState, action: Action) {
         error: false,
         errorMessage: null,
         users: unfollow(state.users, action.payload),
+      };
+
+    case 'HANDLE_FAVORITE_SUCCESS':
+      return {
+        ...state,
+        error: false,
+        errorMessage: null,
+        users: handleFavorite(state.users, action.payload),
       };
 
     case 'CLEAN_USERS_ARRAY':

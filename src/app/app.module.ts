@@ -57,6 +57,9 @@ import { UserItemComponent } from './shared/users-list/components/user-item/user
 import { UserPostsComponent } from './modules/profile/components/user-posts/user-posts.component';
 import { MinimizedPostComponent } from './modules/profile/components/minimized-post/minimized-post.component';
 import { PostViewerComponent } from './modules/profile/components/post-viewer/post-viewer.component';
+import { FeedAsideComponent } from './modules/feed-aside/feed-aside.component';
+import { FollowingsListComponent } from './modules/feed-aside/components/followings-list/followings-list.component';
+import { LikeBtnComponent } from './shared/like-btn/like-btn.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +94,9 @@ import { PostViewerComponent } from './modules/profile/components/post-viewer/po
     UserPostsComponent,
     MinimizedPostComponent,
     PostViewerComponent,
+    FeedAsideComponent,
+    FollowingsListComponent,
+    LikeBtnComponent,
   ],
   imports: [
     BrowserModule,
