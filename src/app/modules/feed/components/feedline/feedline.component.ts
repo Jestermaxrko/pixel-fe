@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostsService } from '../../../../../services/posts.service';
 import { PostState } from '../../../../../models/redux.state.model';
 import { Post } from '../../../../../models/post.model';
@@ -9,6 +9,7 @@ import { Post } from '../../../../../models/post.model';
 })
 
 export class FeedlineComponent implements OnInit {
+  @ViewChild('scroll') scroll;
   postsState: PostState;
   allFeedLinePosts: Post[];
   feedLinePosts: Post[];
@@ -22,12 +23,6 @@ export class FeedlineComponent implements OnInit {
     this.postsService.getPostsState().subscribe((res): any => {
       this.curPostsLen = this.initPostsLen;
       this.allFeedLinePosts = res.currentSessionPosts.filter((item: Post): boolean => item.type === 'feed');
-
-      // ------UNCOMMENT IF YOU HAVE LESS THAN 10 POSTS FOR VIRTUAL SCROLL-----//
-      // for(let i = 0; i < 5 ; i++) {
-      //   this.allFeedLinePosts = [...this.allFeedLinePosts, ...this.allFeedLinePosts];
-      // }
-
       this.feedLinePosts = this.allFeedLinePosts.filter((item: Post, i: number): boolean =>  i < this.curPostsLen);
     });
   }
@@ -43,7 +38,7 @@ export class FeedlineComponent implements OnInit {
     if (e.start > 0) { this.upstairShow = true; } else { this.upstairShow = false; }
   }
 
-  navigateTop = (scroll): void => {
-    scroll.scrollToIndex(0, true, 0, 2000);
+  navigateTop = (): void => {
+    this.scroll.scrollToIndex(0, true, 0, 2000);
   }
 }

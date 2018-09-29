@@ -25,4 +25,9 @@ export class PostsApi {
   getSinglePost = (postId: string): Observable<any> => {
     return this.http.get(`${env.host}:${env.port}/post/${postId}`, { headers: this.httpService.getHeaders() });
   }
+
+  uploadPost = (image: string, description: string, geolocation: string, author: string): Observable<any> => {
+    const post = { image, description, geolocation, author };
+    return this.http.post(`${env.host}:${env.port}/add-post`, { post }, { headers: this.httpService.getHeaders() });
+  }
 }

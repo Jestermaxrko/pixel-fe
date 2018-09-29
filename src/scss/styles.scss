@@ -9,6 +9,11 @@
 @import './scrollbar';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+html,body {
+  width: 100%;
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }

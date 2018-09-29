@@ -16,6 +16,7 @@ interface Payload {
 export class PostViewerComponent implements OnInit {
   @Input() payload: Payload;
   @HostBinding('class') classes = 'post-viewer';
+  posts: Post[];
   curIndex =  0;
   leftButton: boolean;
   rightButton: boolean;
@@ -26,6 +27,7 @@ export class PostViewerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.payload.posts = this.payload.posts.sort((a, b) => b.timestamp - a.timestamp);
     this.curIndex = this.payload.index;
     this.leftButton = this.curIndex > 0;
     this.rightButton = !(this.curIndex > this.payload.posts.length - 2);

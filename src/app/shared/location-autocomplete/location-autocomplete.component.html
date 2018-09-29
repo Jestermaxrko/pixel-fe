@@ -1,0 +1,29 @@
+<input 
+  #locationInput
+  class="saving-panel__input location-input" 
+  type="text"
+  value="{{ wasSelected ? selectedLocation : locationInput.value}}"
+  (keydown)="navigateByArrows($event)"
+  (keyup)="getLocationSuggest($event)"
+>
+
+<button 
+  *ngIf="selectedLocation"
+  mat-icon-button class="clear-btn"
+  (click)="clearInput()"
+>
+  <i class="material-icons">close</i>
+</button>
+
+<div *ngIf="suggestionOpen" class="suggest-box" (click)="stopClosing($event)">
+  <div 
+    *ngFor="let item of items; index as i" 
+    id={{i}} 
+    class="suggest-item {{i===selectedIndex ? 'suggest-item--active': ''}}" 
+    (mouseover)="setActive($event)"
+    (mouseleave)="setUnActive($event)"
+    (click)="selectLocation($event)"
+  >
+    {{item}}
+  </div>
+</div>

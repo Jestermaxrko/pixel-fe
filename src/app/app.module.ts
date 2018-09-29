@@ -61,6 +61,8 @@ import { FeedAsideComponent } from './modules/feed-aside/feed-aside.component';
 import { FollowingsListComponent } from './modules/feed-aside/components/followings-list/followings-list.component';
 import { LikeBtnComponent } from './shared/like-btn/like-btn.component';
 
+import { PostUploadComponent } from './modules/post-upload/post-upload.component';
+import { LocationAutocompleteComponent } from './shared/location-autocomplete/location-autocomplete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +99,8 @@ import { LikeBtnComponent } from './shared/like-btn/like-btn.component';
     FeedAsideComponent,
     FollowingsListComponent,
     LikeBtnComponent,
+    PostUploadComponent,
+    LocationAutocompleteComponent,
   ],
   imports: [
     BrowserModule,

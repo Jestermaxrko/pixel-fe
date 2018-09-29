@@ -1,0 +1,93 @@
+<div 
+  *ngIf="!hideUpload"
+  #dropArea
+  class="drop-area"
+  (dragenter)="this.startDrag($event)"
+  (dragleave)="this.endDrag($event)"
+  (drop)="this.dropHandler($event)"
+  (dragover)="this.dragOverHandler($event)"
+> 
+  <div #dropAreaBox class="drop-area-box">
+    <p class="drop-area__title">Upload a photo</p>
+    <input 
+      type="file" 
+      class="file-input" 
+      id="file-input" 
+      accept="image/*"
+      (change)="changeFileHandler($event)"
+    > 
+    <label for="file-input" >
+      <i class="material-icons drop-area__icon">add_a_photo</i>
+    </label>
+  </div>
+</div>
+
+<app-spinner *ngIf="loading" class="uploading-spinner"></app-spinner>
+
+
+<div *ngIf="photoDataUrl" class="uploaded-image">
+  <div class="uploaded-image-preview">
+    <canvas #canvas></canvas>
+  </div>
+
+  <div #postInfo class="uploaded-image-saving-panel">
+    <div class="saving-panel-header"> 
+      <i class="material-icons">edit</i>
+      <p class="saving-panel__title">Add post info</p>
+      <button 
+        mat-icon-button
+        class="saving-panel__close-btn"
+        (click)="closeCurrentPost()" 
+      >
+        <i class="material-icons">close</i>
+      </button>
+    </div>
+
+      <form class="saving-panel-form" (submit)="savePost()">
+        <div class="saving-panel-field">
+          <label class="saving-panel__label">Location</label>
+          <app-location-autocomplete 
+            (sendLocation) = "reciveLocation($event)"
+          ></app-location-autocomplete>
+        </div>
+
+      <div class="saving-panel-field">
+        <label class="saving-panel__label">Description</label>
+        <textarea  
+          class="saving-panel__input saving-panel__textarea"
+          (keyup)="handleDescription($event)"
+          (keydown.enter)="preventEnter($event)"
+          value="description"
+        ></textarea>
+      </div>
+
+      <p *ngIf="postsState.isLoading" class="saving-spinner">
+          <app-spinner size="30"> </app-spinner>
+      </p>
+
+      <div *ngIf="!postsState.isLoading" class="saving-panel-field">
+        <input 
+          #changeInput
+          type="file" 
+          class="file-input" 
+          id="file-input" 
+          accept="image/*"
+          (change)="changeFileHandler($event)"
+        > 
+
+        <button (click)="changePhoto()" type="button" mat-raised-button class="saving-panel__change-btn saving-panel__btn">
+          <i class="material-icons">autorenew</i>
+          Change photo
+        </button>
+        
+        <button type="submit" mat-raised-button class="saving-panel__save-btn saving-panel__btn">
+          <i class="material-icons">save</i>
+          Save
+        </button>
+      </div>
+    </form>
+     {{postSavingStarted && !postsState.isLoading ? redirectToOwnPage() : null}}
+  </div>
+</div>
+
+
