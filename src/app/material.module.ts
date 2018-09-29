@@ -8,6 +8,9 @@ import {
   MatListModule,
   MatDividerModule,
   MatSlideToggleModule,
+  MatExpansionModule,
+  MatCardModule,
+  MatBadgeModule,
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import 'hammerjs';
@@ -23,6 +26,9 @@ import 'hammerjs';
     MatListModule,
     MatDividerModule,
     MatSlideToggleModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatBadgeModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -34,6 +40,9 @@ import 'hammerjs';
     MatListModule,
     MatDividerModule,
     MatSlideToggleModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatBadgeModule,
   ],
 })
 export class MaterialModule { }

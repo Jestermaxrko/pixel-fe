@@ -39,6 +39,15 @@ export class UsersService {
     );
   }
 
+  handleFavorite = (data: object): void => {
+    this.usersApi.handleFavorite(data).subscribe(
+      (res: any): void => {
+        this.store.dispatch({ type: 'HANDLE_FAVORITE_SUCCESS', payload: res.payload });
+      },
+      (err: any): void => this.store.dispatch({ type: 'USERS_ERR', payload: err }),
+    );
+  }
+
   cleanUsersArray = (): void => {
     this.store.dispatch({ type: 'CLEAN_USERS_ARRAY' });
   }

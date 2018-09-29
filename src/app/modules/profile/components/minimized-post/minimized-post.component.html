@@ -1,19 +1,17 @@
-<!-- <a [routerLink]="['/post/' + post._id]"> -->
-  <div class="photo-wrapper" (click)="handeOpenPostViewer()">
+<div class="photo-wrapper" (click)="handeOpenPostViewer()">
+  
+      <img class="mini-post__image" alt="user-img" src="{{awsImage + '/' + post.image}}" />
+
+
+  <div class="post-info">
+    <div class="mini-post__stat-field">
+        <i class="material-icons">favorite</i>
+        <span class="mini-post__value">{{post.likes.length}}</span>  
+    </div>
     
-        <img class="mini-post__image" alt="user-img" src="{{awsImage + '/' + post.image}}" />
-
-
-    <div class="post-info">
-      <div class="mini-post__stat-field">
-          <i class="material-icons">favorite</i>
-          <span class="mini-post__value">{{post.likes.length}}</span>  
-      </div>
-      
-      <div class="mini-post__stat-field">
-          <i class="material-icons">chat_bubble</i>
-          <span class="mini-post__value">{{post.comments.length}} </span>
-      </div>
-    </div>           
-  </div>
-<!-- </a> -->
+    <div class="mini-post__stat-field">
+        <i class="material-icons">chat_bubble</i>
+        <span class="mini-post__value">{{post.comments.length}} </span>
+    </div>
+  </div>           
+</div>

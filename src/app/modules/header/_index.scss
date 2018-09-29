@@ -1,10 +1,11 @@
 .header {
   $_gap: 10px;
-
   height: 60px;
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid $light-grey;
+  position: fixed;
+  z-index: 999;
   @include flexJustCenter;
 
   &-container {
