@@ -1,5 +1,5 @@
 .post-viewer {
-  width: 50%;
+  width: 100%;
   margin: auto;
 
   &-container {
@@ -9,12 +9,13 @@
   
   .navigation-panel {
     margin: 0 5px;
-    width: 100px;
+    width: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    user-select: none;
   }
 
   .navigation-panel__icon {
@@ -25,7 +26,6 @@
   .navigation-panel:hover {
     background-color: rgba($color: #000000, $alpha: .1);
   }
-
   
   .icon--disabled {
     font-size: 50px;
@@ -40,11 +40,14 @@
 
 
   @include mQ(769px) {
-    
+    width: 80%;
     @include flexCenter;
     
+    .navigation-panel {
+      width: 100px;
+    }
+
     .post {
-      //height: 90vh;
       margin-top: 0;
       min-width: 600px;
       max-width: 940px;

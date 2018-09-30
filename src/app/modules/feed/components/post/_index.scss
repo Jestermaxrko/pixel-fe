@@ -11,6 +11,7 @@
     max-width: 100%;
     justify-self: center;
     margin: 10px 0;
+    max-height: 400px;
   }
 
   @include mQ(769px) {

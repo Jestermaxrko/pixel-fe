@@ -30,9 +30,17 @@ export class PostsService {
     );
   }
 
-  getSinglePost = (postId: string) => {
+  getSinglePost = (postId: string): void => {
     this.postsApi.getSinglePost(postId).subscribe(
       (res: any): void => this.store.dispatch({ type: 'ADD_POST_TO_SESSION', payload: [res.post] }),
+      (err: any): void => this.store.dispatch({ type: 'POST_ADD_ERROR', payload: err }),
+    );
+  }
+
+  uploadPost = (image: string, description: string, geolocation: string, author: string): void => {
+    this.store.dispatch({ type: 'START_POST_PROCESSING' });
+    this.postsApi.uploadPost(image, description, geolocation, author).subscribe(
+      (res: any): void => this.store.dispatch({ type: 'POST_ADD_SUCCESS', payload: res.post }),
       (err: any): void => this.store.dispatch({ type: 'POST_ADD_ERROR', payload: err }),
     );
   }
